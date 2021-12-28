@@ -1,6 +1,8 @@
 ---
 title: "Gif Testing"
 excerpt_separator: "<!--more-->"
+layout: single
+comments: true
 categories:
   - Devlogs
 tags:
