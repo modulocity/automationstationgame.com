@@ -277,6 +277,18 @@ compress_html:
   clippings: all
   ignore:
     envs: development
+    
+# Collections
+collections:
+#   devlogs:
+#     output: true
+#     permalink: /:collection/:path/
+  docs:
+    output: true
+    permalink: /:collection/:path/
+  tutorials:
+    output: true
+    permalink: /:collection/:path/
 
 
 # Defaults
@@ -284,11 +296,11 @@ defaults:
   # _posts
   - scope:
       path: ""
-      type: posts
+      type: devlogs
     values:
       layout: single
       author_profile: true
       read_time: true
-      comments: # true
+      comments: true
       share: true
       related: true
