@@ -1,6 +1,6 @@
 ---
-layout: posts
+layout: home
 title: "Developer Logs"
-permalink: /devlog/
+permalink: /devlogs/
 author_profile: false
 ---
