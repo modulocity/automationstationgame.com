@@ -1,6 +1,7 @@
 ---
-layout: home
-title: "Developer Logs"
+title: "Devlogs"
+layout: collection
 permalink: /devlogs/
+collection: devlogs
 author_profile: false
 ---
