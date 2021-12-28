@@ -2,7 +2,7 @@
 title: "Gif Testing"
 excerpt_separator: "<!--more-->"
 categories:
-  - Blog
+  - Devlog
 tags:
   - Testing
   - Gif
