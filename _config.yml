@@ -298,12 +298,13 @@ defaults:
       comments: true
       share: true
       related: true
+      permalink: /:categories/:title/
+      breadcrumbs: true
  # _posts/devlogs
   - scope:
       path: "_posts/devlogs"
       type: posts
     values:
-      permalink: devlogs/:year/:month/:day/:title
       categories:
         - Devlog
  # _posts/tutorials
@@ -311,7 +312,6 @@ defaults:
       path: "_posts/tutorials"
       type: posts
     values:
-      permalink: tutorials/:title
       categories:
         - Tutorial
  # _pages
