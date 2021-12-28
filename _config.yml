@@ -309,6 +309,7 @@ defaults:
       comments: true
       share: true
       related: true
+      permalink: /devlogs/
       categories:
         - Devlog
  # _posts/tutorials
@@ -322,6 +323,7 @@ defaults:
       comments: true
       share: true
       related: true
+      permalink: /tutorials/
       categories:
         - Tutorial
  # _pages
