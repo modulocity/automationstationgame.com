@@ -1,7 +1,7 @@
 # main links
 main:
-  - title: "Devlog"
-    url: /devlog/
+  - title: "Developer Logs"
+    url: /devlogs/
   - title: "Docs"
     url: /docs/
   # - title: "Quick-Start Guide"
