@@ -293,7 +293,7 @@ collections:
 
 # Defaults
 defaults:
-  # _posts
+  # _devlogs
   - scope:
       path: ""
       type: devlogs
