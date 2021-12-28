@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "Automation Station"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Scott Daley"
+name                     : "Automation Station"
 description              : "Automation Station: a game about automation"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -150,7 +150,7 @@ footer:
       icon: "fab fa-fw fa-instagram"
       # url:
     - label: "Discord"
-      icon: "fab fa-fw fa-discord-square"
+      icon: "fab fa-fw fa-discord"
       url: "https://discord.com/invite/QHqgE9kujZ"
 
 
