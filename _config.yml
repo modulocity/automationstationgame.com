@@ -288,19 +288,8 @@ collections:
 # Defaults
 defaults:
   # _posts
-#   - scope:
-#       path: ""
-#       type: posts
-#     values:
-#       layout: single
-#       author_profile: true
-#       read_time: true
-#       comments: true
-#       share: true
-#       related: true
- # _posts/devlogs
   - scope:
-      path: "devlogs"
+      path: ""
       type: posts
     values:
       layout: single
@@ -309,21 +298,20 @@ defaults:
       comments: true
       share: true
       related: true
-      permalink: /devlogs/
+ # _posts/devlogs
+  - scope:
+      path: "_posts/devlogs"
+      type: posts
+    values:
+      permalink: devlogs/:year/:month/:day/:title
       categories:
         - Devlog
  # _posts/tutorials
   - scope:
-      path: "tutorials"
+      path: "_posts/tutorials"
       type: posts
     values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
-      permalink: /tutorials/
+      permalink: tutorials/:title
       categories:
         - Tutorial
  # _pages
