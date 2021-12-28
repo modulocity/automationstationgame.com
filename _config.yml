@@ -44,7 +44,7 @@ comments:
     theme                : # "github-light" (default), "github-dark"
     issue_term           : # "pathname" (default)
   giscus:
-    repo                 : "modulocity/automationstationgame.com
+    repo                 : "modulocity/automationstationgame.com"
     repo_id              : "R_kgDOGmCcuA" # Shown during giscus setup at https://giscus.app
     category_name        : "Announcements" # Full text name of the category
     category_id          : "DIC_kwDOGmCcuM4CAdPP" # Shown during giscus setup at https://giscus.app
