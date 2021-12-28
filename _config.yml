@@ -280,23 +280,17 @@ compress_html:
     
 # Collections
 collections:
-  devlogs:
-    output: true
-    permalink: /:collection/:path/
   docs:
-    output: true
-    permalink: /:collection/:path/
-  tutorials:
     output: true
     permalink: /:collection/:path/
 
 
 # Defaults
 defaults:
-  # _devlogs
+  # _posts
   - scope:
       path: ""
-      type: devlogs
+      type: posts
     values:
       layout: single
       author_profile: true
@@ -304,6 +298,32 @@ defaults:
       comments: true
       share: true
       related: true
+ # _posts/devlogs
+  - scope:
+      path: "devlogs"
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+      categories:
+        - Devlog
+ # _posts/tutorials
+  - scope:
+      path: "tutorials"
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+      categories:
+        - Tutorial
  # _pages
   - scope:
       path: "_pages"
