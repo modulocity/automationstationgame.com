@@ -305,14 +305,14 @@ defaults:
       type: posts
     values:
       categories:
-        - Devlog
+        - Devlogs
  # _posts/tutorials
   - scope:
       path: "_posts/tutorials"
       type: posts
     values:
       categories:
-        - Tutorial
+        - Tutorials
  # _pages
   - scope:
       path: "_pages"
