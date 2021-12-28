@@ -1,10 +1,8 @@
 ---
 title: "Parts"
-categories:
-  - Docs
-tags:
-  - Docs
-  - Parts
+permalink: /docs/parts/
+last_modified_at: 2021-12-28
+toc: true
 ---
 
 # Parts
