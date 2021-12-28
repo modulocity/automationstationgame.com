@@ -280,9 +280,9 @@ compress_html:
     
 # Collections
 collections:
-#   devlogs:
-#     output: true
-#     permalink: /:collection/:path/
+  devlogs:
+    output: true
+    permalink: /:collection/:path/
   docs:
     output: true
     permalink: /:collection/:path/
