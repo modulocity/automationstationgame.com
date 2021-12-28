@@ -1,7 +1,12 @@
 ---
 title: "Devlogs"
-layout: collection
+layout: archive
 permalink: /devlogs/
-collection: devlogs
 author_profile: false
 ---
+
+{% for post in site.categories.devlogs %}
+  {% unless post.hidden %}
+    {% include archive-single.html %}
+  {% endunless %}
+{% endfor %}
