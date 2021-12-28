@@ -2,6 +2,8 @@
 main:
   - title: "Developer Logs"
     url: /devlogs/
+  - title: "Tutorials"
+    url: /tutorials/
   - title: "Docs"
     url: /docs/
   # - title: "Quick-Start Guide"
