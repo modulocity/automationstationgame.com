@@ -45,11 +45,11 @@ comments:
     issue_term           : # "pathname" (default)
   giscus:
     repo                 : "modulocity/automationstationgame.com"
-    repo_id              : "R_kgDOGmCcuA" # Shown during giscus setup at https://giscus.app
-    category_name        : "Announcements" # Full text name of the category
-    category_id          : "DIC_kwDOGmCcuM4CAdPP" # Shown during giscus setup at https://giscus.app
-    discussion_term      : "pathname" # "pathname" (default), "url", "title", "og:title"
-    reactions_enabled    : '1' # '1' for enabled (default), '0' for disabled
+    repo-id              : "R_kgDOGmCcuA" # Shown during giscus setup at https://giscus.app
+    category             : "Comments" # Full text name of the category
+    category-id          : "DIC_kwDOGmCcuM4CAdeV" # Shown during giscus setup at https://giscus.app
+    mapping              : "pathname" # "pathname" (default), "url", "title", "og:title"
+    reactions-enabled    : '1' # '1' for enabled (default), '0' for disabled
     theme                : "dark" # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
     crossorigin          : "anonymous"
   staticman:
