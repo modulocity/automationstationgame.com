@@ -1,7 +1,6 @@
 ---
 title: "Gif Testing"
-categories:
-  - Devlogs
+permalink: /devlogs/
 tags:
   - Testing
   - Gif
