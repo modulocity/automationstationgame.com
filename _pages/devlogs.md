@@ -9,3 +9,9 @@ permalink: /devlogs/
     {% include archive-single.html %}
   {% endunless %}
 {% endfor %} -->
+
+{% for post in site.posts %}
+  {% unless post.hidden %}
+    {% include archive-single.html %}
+  {% endunless %}
+{% endfor %}
