@@ -111,16 +111,16 @@ author:
   email            :
   links:
     - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:your.name@email.com"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:automationstationgame@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
     - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
+      icon: "fab fa-fw fa-twitter"
       url: "https://twitter.com/gravitonpunch"
     - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
+      icon: "fab fa-fw fa-facebook"
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
@@ -133,10 +133,10 @@ author:
 footer:
   links:
     - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
+      icon: "fab fa-fw fa-twitter"
       url: "https://twitter.com/gravitonpunch"
     - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
+      icon: "fab fa-fw fa-facebook"
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
