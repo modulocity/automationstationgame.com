@@ -120,9 +120,9 @@
   /* next/previous buttons */
   &--pager {
     display: block;
-    padding: 1em 2em;
-    float: left;
-    width: 50%;
+    // padding: 1em 2em;
+    padding: 0.5em 1em;
+    // width: 15%;
     font-family: $sans-serif;
     font-size: $type-size-5;
     font-weight: bold;
@@ -133,18 +133,20 @@
     border-radius: $border-radius;
 
     &:hover {
-      @include yiq-contrasted($muted-text-color);
+      @include yiq-contrasted($primary-color);
     }
 
     &:first-child {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      // border-top-right-radius: 0;
+      // border-bottom-right-radius: 0;
+      float: left;
     }
 
     &:last-child {
-      margin-left: -1px;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+      // margin-left: -1px;
+      // border-top-left-radius: 0;
+      // border-bottom-left-radius: 0;
+      float: right;
     }
 
     &.disabled {
@@ -155,14 +157,14 @@
   }
 }
 
-.page__content + .pagination,
-.page__meta + .pagination,
-.page__share + .pagination,
-.page__comments + .pagination {
-  margin-top: 2em;
-  padding-top: 2em;
-  border-top: 1px solid $border-color;
-}
+// .page__content + .pagination,
+// .page__meta + .pagination,
+// .page__share + .pagination,
+// .page__comments + .pagination {
+//   margin-top: 2em;
+//   padding-top: 2em;
+//   border-top: 1px solid $border-color;
+// }
 
 /*
      Priority plus navigation
@@ -177,7 +179,7 @@
   -ms-flex-align: center;
   align-items: center;
   min-height: $nav-height;
-  background: $background-color;
+  background: $masthead-background-color;
 
   a {
     display: block;

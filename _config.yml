@@ -80,7 +80,7 @@ baidu_site_verification  :
 
 # Social Sharing
 twitter:
-  username               : "gravitonpunch"
+  username               : "autostationgame"
 facebook:
   username               :
   app_id                 :
@@ -92,7 +92,7 @@ social:
   type                   : Organization # Person or Organization (defaults to Person)
   name                   : Automation Station # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
-    - "https://twitter.com/gravitonpunch"
+    - "https://twitter.com/autostationgame"
 
 # Analytics
 analytics:
@@ -303,8 +303,9 @@ defaults:
       author_profile: true
       read_time: true
       comments: true
-      share: true
-      related: true
+      share: false
+      follow: true
+      related: false
       permalink: /blog/:categories/:title/
       breadcrumbs_path: '/'
   - scope:
