@@ -23,7 +23,7 @@ name                     : "Automation Station"
 description              : "Automation Station: a game about automation"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "modulocity/automationstationgame.com" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
@@ -44,12 +44,11 @@ comments:
     theme                : # "github-light" (default), "github-dark"
     issue_term           : # "pathname" (default)
   giscus:
-    repo                 : "modulocity/automationstationgame.com"
-    repo-id              : "R_kgDOGmCcuA" # Shown during giscus setup at https://giscus.app
-    category             : "Comments" # Full text name of the category
-    category-id          : "DIC_kwDOGmCcuM4CAdeV" # Shown during giscus setup at https://giscus.app
-    mapping              : "pathname" # "pathname" (default), "url", "title", "og:title"
-    reactions-enabled    : '1' # '1' for enabled (default), '0' for disabled
+    repo_id              : "R_kgDOGmCcuA" # Shown during giscus setup at https://giscus.app
+    category_name        : "Comments" # Full text name of the category
+    category_id          : "DIC_kwDOGmCcuM4CAdeV" # Shown during giscus setup at https://giscus.app
+    discussion_term      : "pathname" # "pathname" (default), "url", "title", "og:title"
+    reactions_enabled    : '1' # '1' for enabled (default), '0' for disabled
     theme                : "dark" # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
     crossorigin          : "anonymous"
   staticman:
