@@ -59,7 +59,7 @@ reCaptcha:
   secret                 :
 atom_feed:
   path                   : # blank (default) uses feed.xml
-  hide                   : # true, false (default)
+  hide                   : true # true, false (default)
 search                   : true # true, false (default)
 search_full_content      : true # true, false (default)
 search_provider          : lunr # lunr (default), algolia, google
@@ -112,19 +112,19 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope"
-      url: "mailto:automationstationgame@gmail.com"
-    - label: "Website"
+      # url: "mailto:automationstationgame@gmail.com"
+    - label: "scottjdaley.github.io"
       icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter"
-      url: "https://twitter.com/gravitonpunch"
+      url: "https://scottjdaley.github.io"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook"
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/ScottJDaley"
+    - label: "@gravitonpunch"
+      icon: "fab fa-fw fa-twitter"
+      url: "https://twitter.com/gravitonpunch"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
@@ -132,9 +132,9 @@ author:
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
+    - label: ""
       icon: "fab fa-fw fa-twitter"
-      url: "https://twitter.com/gravitonpunch"
+      url: "https://twitter.com/autostationgame"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook"
       # url:
@@ -150,9 +150,15 @@ footer:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url:
-    - label: "Discord"
+    - label: ""
       icon: "fab fa-fw fa-discord"
       url: "https://discord.com/invite/QHqgE9kujZ"
+    - label: ""
+      icon: "fab fa-fw fa-itch-io"
+      url: "https://gravitonpunch.itch.io/automation-station"
+    - label: ""
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:automationstationgame@gmail.com"
 
 
 # Reading Files
@@ -299,24 +305,8 @@ defaults:
       comments: true
       share: true
       related: true
-      permalink: /:categories/:title/
- # _posts/devlogs
-  - scope:
-      path: "_posts/devlogs"
-      type: posts
-    values:
-      categories:
-        - Devlogs
+      permalink: /blog/:categories/:title/
       breadcrumbs_path: '/'
- # _posts/tutorials
-  - scope:
-      path: "_posts/tutorials"
-      type: posts
-    values:
-      categories:
-        - Tutorials
-      breadcrumbs_path: '/'
- # _pages
   - scope:
       path: "_pages"
       type: pages
