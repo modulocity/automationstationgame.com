@@ -307,6 +307,7 @@ defaults:
     values:
       categories:
         - Devlogs
+      breadcrumbs_path: '/'
  # _posts/tutorials
   - scope:
       path: "_posts/tutorials"
@@ -314,6 +315,7 @@ defaults:
     values:
       categories:
         - Tutorials
+      breadcrumbs_path: '/'
  # _pages
   - scope:
       path: "_pages"
