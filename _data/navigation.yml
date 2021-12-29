@@ -1,7 +1,7 @@
 # main links
 main:
   - title: "Developer Logs"
-    url: /categories/#devlogs
+    url: /devlogs/
   - title: "Tutorials"
     url: /categories/#tutorials
   - title: "Docs"
