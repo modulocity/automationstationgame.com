@@ -31,7 +31,7 @@ The canister is a brand new structure that can be constructed in the game that s
   <source src="https://i.imgur.com/tDLaw1d.mp4" type="video/mp4" />
 </video>
 
-The canister has two modes: input and output mode. In input mode, items can be added to the top slot of the canister where they will be sucked inside. Once an item is stored inside, a hologram will appear on top showing that more of that type can be inserted. When in output mode, items will materialize into the top slot of the canister until it is empty. The canister automatically switches to input mode when empty and output mode when full. The mode can also be switched manually with a button press.
+The canister has two modes: input and output mode. In input mode, items can be added to the top slot of the canister where they will be sucked inside. Once an item is stored inside, a hologram will appear on top showing that more items of that type can be inserted. When in output mode, items will materialize into the top slot of the canister until it is empty. The canister automatically switches to input mode when empty and output mode when full. The mode can also be switched manually with a button press.
 
  You can see the manual mode switching in the gif below:
 
@@ -39,7 +39,7 @@ The canister has two modes: input and output mode. In input mode, items can be a
   <source src="https://i.imgur.com/BF7ZUFb.mp4" type="video/mp4" />
 </video>
 
-I still want to add a stronger visual indication of which mode the canister is in as well as showing how full it is.
+I still want to add a stronger visual indication of which mode the canister is in and showing how full it is, but I'm happy with how its working.
 
 After implementing this version of the canister, I prototyped a few other ideas for how the canister could work. The first was an attempt to remove the need for "modes" on the canister. The idea was to make it work similar to quarter dispenser where items can be inserted or taken out at any time. The top slot would always contain the most recently added item, but additional items could be inserted by hovering over it with another item.
 
@@ -60,6 +60,8 @@ I think this option could work well, but I'm not really happy with how the outpu
 Each option has pros and cons but for now I'm sticking with the first option (with input and output mode). Let me know which option you like best or if you have other ideas in the comments below.
 
 ## Crates
+
+Automation Station has two distinct categories of objects in the game: items and buildings. Items are smaller, can fit into a slot, and can be placed on a conveyor belt. Buildings occupy an entire hex tile, can only be placed on the ground, and can only be moved by a pusher, puller, or orbiter. A conveyor belt is an example of a "building" which means that it cannot be stored in the player's backpack or moved around by other conveyors. 
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/T2fpEBO.mp4" type="video/mp4" />
