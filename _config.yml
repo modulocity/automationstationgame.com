@@ -317,6 +317,13 @@ defaults:
       layout: single
       author_profile: false
       comments: false
+  - scope:
+      path: "_drafts"
+      type: drafts
+    values:
+      layout: single
+      author_profile: false
+      comments: false
  # _docs
   - scope:
       path: ""
