@@ -1,5 +1,7 @@
 ---
 title: "Devlog #2 Crates & Canisters"
+header: 
+  image: /assets/images/crates_and_canisters.png
 tags:
   - Devlog
 ---
