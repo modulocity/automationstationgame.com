@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "custom" # "air", "aqua", "contrast", "dark", "dirt",
 
 # Site Settings
 locale                   : "en-US"
-title                    : ""
+title                    : "Automation Station"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Automation Station"
