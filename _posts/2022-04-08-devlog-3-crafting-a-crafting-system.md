@@ -1,0 +1,103 @@
+---
+title: "Devlog #3 Crafting a Crafting System"
+header: 
+  image: /assets/images/devlogs/devlog_3/header_image.png
+tags:
+  - Devlog
+---
+
+Hey everyone! It has been quite a while since the last devlog so there is a lot I could cover in this one. But rather than try to include everything, I decided to focus this devlog on one of the most important parts of Automation Station, or really any automation game. You guess it, it's crafting. 
+
+## Crafting
+
+Since the very start of this project, I've had this design goal to make everything visible, transparent, and tangible. What does this mean for crafting? Essentially, I want to avoid magical black box machines with hidden internal inventories. The player should be able to see the ingredients getting consumed and the products getting made. It should be intuitive for them to understand how the crafting machines work and how to operate them.
+
+This has proved to be an enormous design challenge. I've gone through several different iterations of the crafting mechanic for Automation Station that I'll breakdown below.
+
+### Spatial Crafting Grid
+
+![Pickaxe Recipe](/assets/images/devlogs/devlog_3/pickaxe.gif)
+
+I've always found Minecraft's crafting grid mechanic to be really interesting. It adds a spatial element that allows for some intuitive recipes while making the crafting process more immersive. The recipe for a stone pickaxe isn't just 2 wood and 3 stone; it's a specific arrangement of those ingredients in the approximate shape of a pickaxe.
+
+One of the first ideas I had for crafting in Automation Station was to adapt this mechanic to be in the game world rather than within a UI. I thought this would create a bit more of a puzzle aspect in how ingredients need to be efficiently routed with conveyors to the correct places.
+
+I was excited to implement this as it sounded like the perfect fit for my design goals. However, I quickly ran into a number of problems. Unless I made the crafting building very large, there was no good way to show the border of the crafting grid. I was (and still am) holding on to this design constraint that all the structures are a single hex tile, so I was hesitant to break that rule here. There is also no obvious way to orient the recipes, especially if the recipe grid is a circular shape. Regardless, I decided to proceed with the implementation and this is what I came up with:
+
+![Spatial Crafting](/assets/images/devlogs/devlog_3/spatial_crafting.png)
+
+Rather than having Minecraft's dynamic recipe system, I opted for setting explicit recipes. In an automation game, you rarely need or want machines to be able to craft multiple things at any given moment (don't worry, I have ideas for dynamically recipe changing for advanced players). This decision allowed me to add holograms indicating which ingredients are required and where they need to be placed. However, it was still unclear how far the machine could reach and which holograms represented the ingredients and which were the products. I also had no idea how the crafter should look or be animated.
+
+### Sequential Crafting
+
+The next idea was an attempt to simplify the crafting by making it sequential rather than spatial. The best example I can think of for this is Subnautica, but specifically the base building mechanic in the game, not the crafting mechanic. Using a habitat builder, the player is able to build structures, pulling the ingredients out of the player's inventory one at a time. The structures can be partially built and finished later once the player has acquired the rest of the ingredients. (Let me know in the comments if you know other games that use this mechanic).
+
+![Subnautica Base Building](/assets/images/devlogs/devlog_3/subnautica.jpg)
+
+The main benefit of this system is that the machine only needs to grab ingredients from a single position, simplifying the usage, design, and animation of the crafting machine. The partial crafting also allows for some interesting setups when combined with all the pushers, rotators, and orbiters available in Automation Station.
+
+For example, an assembly line:
+
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/BO6Krvi.mp4" type="video/mp4" />
+</video>
+
+Or whatever you call this:
+
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/C6OB8E1.mp4" type="video/mp4" />
+</video>
+
+I was really happy with all the cool gameplay options available with this approach, but again I ran into some problems. Since the machine picked up ingredients and placed products in adjacent positions, there were a lot of weird edge cases where there wasn't an obvious "correct" behavior. This means crafting would be unintuitive, regardless of the consistency of the game rules. For example, does a crafter or conveyor belt have priority over the item? What happens if two crafters try to consume the same ingredient?
+
+This also introduced the concept of partially crafted items which adds a lot of complexity to every system that interacts with items. Player's don't want to deal with the partially made items if they never finish the craft. Also, the machine was difficult to operate manually, requiring that ingredients be placed on the ground near the machine instead of directly inside of it.
+
+### Simple Crafting
+
+After spending so much time trying and failing to solve the problems with the previous two ideas, I decided to try and simplify the design even more. Again, one of the main problems with the sequential crafting was that it had to interact with the items of adjacent hex tiles. So I came up with a design that didn't need to do this. 
+
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/qn8crZG.mp4" type="video/mp4" />
+</video>
+
+This new crafting machine has the ingredients placed on to it one at a time (by the player or an arm) and the finished product can be picked up when the craft is complete. This solved pretty much all of the problems I was facing. No more partially crafted items, no interactions with adjacent tiles, more intuitive positions for ingredients and products (similar to real 3D printers), simple manual operation, etc. 
+
+Here is what it looks like in an automated setup:
+
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/wcQALui.mp4" type="video/mp4" />
+</video>
+
+I haven't added any animation to the actual crafting machine yet and there are a few quirks with the item animations, but hopefully you get the idea. 
+
+I'm really happy with how this latest crafting idea has worked out. It might not have the cool spatial recipes or support fancy assembly lines, but its simple and intuitive while still meeting my design goals. As Deiter Rams famously said,
+>Good design is as little design as possible. 
+
+Also, I've realized that there is nothing preventing me from incorporating some of these other ideas later on. For example, I could have some kind of alien structure that requires a specific arrangement of ingredients to power up. Or maybe there is some late-game recipe that has to be assembled in stages, requiring something like an assembly line to produce.
+
+That's all I have for crafting, so let me know your thoughts on crafting in our Discord server or in the comments below.
+
+## Other Changes
+
+In case you are wondering what else I've been up to, I'll just list the major changes below:
+
+- New crafting building (described above)
+- New manual crafting menu
+- New hologram shader
+- New outline shader
+- Crates replaced with "mini" versions of buildings
+- Canisters
+  - No more modes
+  - Mini canisters are still functional as canisters (that means you can have canisters in your backpack)
+  - Arms can now pull items out of or place items into canisters
+- Manually mining with a full backpack drops items on the ground (with physics enabled).
+- Mining drills and tree taps are now placed next to nodes/trees respectively instead of on top of them.
+- New orbiter model
+- New reverser, flipper, and switcher models
+- New save and load system
+
+## Wrapping Up
+
+I'd love to hear all of your ideas about the game. Please check out our Discord server where I regularly chat with y'all and share what I'm working on. I'm also gearing up for the first major round of playtesting near the end of this month. If you are interesting in trying out the game and giving your thoughts, please join the Discord server and let me know. 
+
+Have a great weekend!
