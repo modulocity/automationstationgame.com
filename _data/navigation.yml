@@ -5,7 +5,7 @@ main:
   - title: "BLOG"
     url: /blog/
   - title: "PRESS KIT"
-    url: /presskit/
+    url: /presskit
   # - title: "Docs"
   #   url: /docs/
   # - title: "Quick-Start Guide"
