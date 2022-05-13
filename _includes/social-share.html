@@ -11,8 +11,17 @@
     <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url | url_encode }}" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
   {% endif %}
   {% if page.follow %}
+  
+    <!╌ Steam Widget ╌>
+    {% if site.data.ui-text[site.locale].steam_widget_label %}
+      <h4 class="page__share-title">{{ site.data.ui-text[site.locale].steam_widget_label | default: "Wishlist on Steam" }}</h4>
+    {% endif %}
+
+    <iframe src="https://store.steampowered.com/widget/1991250/" frameborder="0" width="646" height="190"></iframe>
+
+    <!╌ Discord Widget ╌>
     {% if site.data.ui-text[site.locale].discord_invite_label %}
-      <h4 class="page__share-title">{{ site.data.ui-text[site.locale].discord_invite_label | default: "Join the community" }}</h4>
+      <h4 class="page__share-title">{{ site.data.ui-text[site.locale].discord_invite_label | default: "Join the Discord" }}</h4>
     {% endif %}
 
     <script src="{{ '/assets/js/discordInvite.js' | relative_url }}"></script>
