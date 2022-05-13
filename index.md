@@ -11,20 +11,20 @@ header:
       url: https://store.steampowered.com/app/1991250/Automation_Station/
 excerpt: "Explore a mysterious planet, harvest and refine resources, discover new technology, craft machines, and set up automated factories."
 feature_row:
-  - image_path: /assets/images/mining_compressed.gif
+  - image_path: /assets/images/gifs/mining.gif
     alt: "collect"
     title: "COLLECT"
     excerpt: 'Discover and harvest the resources you find throughout the world.'
-  - image_path: /assets/images/machines_compressed.gif
+  - image_path: /assets/images/gifs/machines.gif
     alt: "craft"
     title: "CRAFT"
     excerpt: 'Craft machines to automate your collection, refinement, and crafting tasks.'
 feature_row2:
-  - image_path: /assets/images/automation_compressed.gif
+  - image_path: /assets/images/gifs/automation.gif
     alt: "automate"
     title: "AUTOMATE"
     excerpt: 'Scale up your factory with fully automated assembly lines.'
-  - image_path: /assets/images/splitters_compressed.gif
+  - image_path: /assets/images/gifs/splitters.gif
     alt: "innovate"
     title: "INNOVATE"
     excerpt: 'There are many different ways to accomplish a goal in Automation Station. Each of the individual machines are simple on their own but can be combined to create sophisticated behavior. Design your own splitting mechanism, an item sorter, or anything you dream up.'

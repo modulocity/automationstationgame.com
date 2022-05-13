@@ -2,10 +2,12 @@
 main:
   # - title: "About"
   #   url: /about/
-  - title: "Blog"
+  - title: "BLOG"
     url: /blog/
-  - title: "Docs"
-    url: /docs/
+  - title: "PRESS KIT"
+    url: /presskit/
+  # - title: "Docs"
+  #   url: /docs/
   # - title: "Quick-Start Guide"
   #   url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
   # - title: "About"

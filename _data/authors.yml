@@ -1,0 +1,18 @@
+Automation Station:
+  # name        : "Automation Station"
+  # bio         : "Game developer. He/Him"
+  # avatar      : "https://avatars.githubusercontent.com/u/2761011?v=4"
+  # location    : "Seattle, WA"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:automationstationgame@gmail.com"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter"
+      url: "https://twitter.com/gravitonpunch"
+    - label: "Discord"
+      icon: "fab fa-fw fa-discord"
+      url: "https://discord.com/invite/QHqgE9kujZ"
+    - label: "Steam"
+      icon: "fab fa-fw fa-steam"
+      url: "https://store.steampowered.com/app/1991250/Automation_Station/"
