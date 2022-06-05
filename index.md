@@ -11,7 +11,7 @@ header:
       url: https://store.steampowered.com/app/1991250/Automation_Station/
 excerpt: "Explore a mysterious planet, harvest and refine resources, discover new technology, craft machines, and set up automated factories."
 feature_row:
-  - image_path: /assets/images/gifs/mining.gif
+  - image_path: /assets/images/gifs/laser_mining_compressed.gif
     alt: "collect"
     title: "COLLECT"
     excerpt: 'Discover and harvest the resources you find throughout the world.'
