@@ -41,7 +41,11 @@
 }
 
 .site-logo img {
-  max-height: 4rem;
+  max-height: 9rem;
+  object-fit: scale-down;
+  position: relative;
+  top: 50%;
+  transform: translateY(-25%);
 }
 
 .site-title {
