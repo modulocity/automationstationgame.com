@@ -1,7 +1,7 @@
 ---
 title: "Devlog #4 Crafting vs. Constructing Buildings"
 header: 
-  image: /assets/images/canisters_and_crates.png
+  image: /assets/images/devlogs/devlog_4/header_image.png
 tags:
   - Devlog
 ---
