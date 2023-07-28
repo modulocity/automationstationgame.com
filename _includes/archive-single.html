@@ -4,6 +4,13 @@
   {% assign teaser = site.teaser %}
 {% endif %}
 
+<!-- TODO: Look into a better way to add images to blog list -->
+<!-- {% if post.header.image %}
+  {% capture image %}{{ post.header.image }}{% endcapture %}
+{% else %}
+  {% assign image = site.image %}
+{% endif %} -->
+
 {% if post.id %}
   {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
 {% else %}
@@ -17,6 +24,8 @@
         <img src="{{ teaser | relative_url }}" alt="">
       </div>
     {% endif %}
+    <!-- TODO: Look into a better way to add images to blog list -->
+    <!-- <img src="{{ image | relative_url }}" alt=""> -->
     <h2 class="archive__item-title no_toc" itemprop="headline">
       {% if post.link %}
         <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
