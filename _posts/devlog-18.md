@@ -65,17 +65,40 @@ Another possibility is to add some kind of output slot on the side of the canist
   <source src="https://i.imgur.com/lMlXU6k.mp4" type="video/mp4" />
 </video>
 
-If a belt was placed next to the canister, the item would drop on to the belt. While this concept seems nice in theory, there are some issues with clipping if the canister happens to be butting up next to a cliff. I also don't really care for the design of this canister as I find it less intuitive and more awkward to use.
+If a belt was placed next to the canister, the item would drop on to the belt. While this concept seems nice in theory, there are some issues with clipping if the canister happens to be butting up next to a cliff. In general, I try to avoid designs where the building extends beyond its hex tile. I also don't really care for the design of this canister as the multiple item slots are less intuitive and more awkward to use.
 
 ### Hopper
 
-In real life factories, a hopper is the name for a container used to store bulk material. Typically, it is tapered at the bottom so that the material can fall out the bottom using only gravity. They are also commonly found holding coffee beans on top of an espresso machine or coffee grinder
+In real life factories, a hopper is the name for a container used to store bulk material. Typically, it is tapered at the bottom so that the material can fall out the bottom using only gravity. They are also commonly found holding coffee beans on top of an espresso machine or coffee bean grinder
 
-![Hopper Ideas](/assets/images/devlogs/devlog_17/factory_hopper.png)
+![Factory Hopper](/assets/images/devlogs/devlog_18/factory_hopper.png)
 
-![Hopper Ideas](/assets/images/devlogs/devlog_17/coffee_hopper.png)
+![Coffee Hopper](/assets/images/devlogs/devlog_18/coffee_hopper.png)
 
-![Hopper Ideas](/assets/images/devlogs/devlog_17/hopper.png)
+Hoppers aren't very common in games, with one big exception: Minecraft. Minecraft features both hoppers and chests, both of which can store items. The chest is mostly for manual use while the hopper lets you collect loose items, input items into buildings, **and** pull items out of buildings. However, hoppers have a relatively small inventory so they are typically combined with chests to get the best of both options.
+
+![Minecraft Hopper](/assets/images/devlogs/devlog_18/minecraft_hopper.png)
+
+With the new height-based mechanics that have been added to Automation Station, I thought that a hopper design could work well. I came up with two variants: one that drops items into an adjacent building, and one that sits directly top of a building and drops items into it.
+
+![Hopper Ideas](/assets/images/devlogs/devlog_18/hopper.png)
+
+The design on the left is the most consistent with existing mechanics in the game. Conveyors belts can drop items into lower adjacent buildings, so this hopper would work the same way. However, I personally find this design a little weird. When I think of a hopper, I genereally thing of something that sits on top of something else, not to the side of it. There is also the problem of knowing how high the hopper needs to be. Without a bunch of indicators, it will be hard to know for sure that the hopper is high enough to drop items into the building next to it.
+
+I find the hopper-on-top design on the right to be much more intuitive. Simply stick it on a building and it will drop items into the building below. No guessing if things are high enough. If the player is able to place the hopper somewhere, they know it will work as expected. I continued to iterate on this design and here is what it looks like in game:
+
+<pic of new hopper>
+
+There are a few considerations with this design. The first is that loading items into this hopper requires bringing items way up high and dropping them into the top of the hopper. This would require multiple ramps or a big cliff to get the height needed. This isn't necessarily a problem, but it is quite clunky to use in fully automated setups.
+
+The second considertion is that this idea requires support for stacking buildings on top of other buildings. This hasn't been a feature of the game up to this point and is a pretty big change. On the implementation side, I spent several days converting the existing hex grid into a full 3D grid that supports stacking. But this also has big implications for gameplay. If a hopper can stack on a crucible, what other buildings can be stacked together? I have some other ideas that could leverage stacked buildings, but I'm not sure that there are enough ways to make the mechanic interesting. Perhaps the hopper is one of the only buildings that works this way, but it feels like this should become a primary mechanic of the game or not have it all. 
+
+There is also the question of whether stacked buildings works with the current camera and controls. When things stack, they can easily occlude large parts of the factory behind them, making it hard to see and hard to click on what you want. Other games get around this by either having a first person camera or having a way to view specific layers. 
+
+Stacked buildings is a pretty big topic that I plan to explore more. At the moment, I'm still undecided on if it is the right direction for the game. I'll revisit this topic in a future devlog, but for now, let's get back to designing an item storage solution!
+
+### Belt Chest
+
 
 ## Changelog:
 
