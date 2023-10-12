@@ -38,10 +38,9 @@ And, just like the chest, the hopper can be loaded or emptied manually with the 
 
 <!-- gif of hopper manual interactions -->
 
+## Two Storage Options?
 
-## Item Storage Design Considerations
-
-### Two Storage Options
+<!-- pic of chest ~= hopper -->
 
 You might be wondering why there are two item storage buildings. Both the chest and hopper can receive and output items, albeit in slgihtly different ways, and store 10 items internally. This overlap in design isn't inherently bad as it gives the player more options. However, it can also be a little confusing and misleading. For example, if the player wants to store some crafted items at the end of an assembly line, they might try to use the hopper. While this works, it is more awkward to use for receiving items due to the height of the top slot. Alternatively, if the player wants to queue up a bunch of iron ore to be smelted, they could use a chest and ramp to deliver some ore to a crucible, but it is much more straightforward to place a hopper directly on top of the crucible.
 
@@ -49,7 +48,9 @@ Initially, I only wanted one item storage building. However, I struggled to come
 
 One possibility is to tweak the functionality of the hopper and chest so that they no longer overlap. Perhaps the hopper cannot receive items into the top slot in an automated fashion. This would make it only useful as an input inventory that has to be filled manually. And perhaps the chest can only receive items, requiring the player to manually retrieve them when needed. 
 
-### Chests > Belts?
+## Chests > Belts?
+
+<!-- pic of chest = belt + crate -->
 
 After implementing the chest, I realized that it is essentially identical to a normal conveyor belt, just with the extra ability to store extra items. Any time you would normally use a straight conveyor belt, you could instead use a chest without any real downsides. In fact, I can imagine that some players using chests everywhere in place of belts as a way to add buffers to their production chains. 
 
@@ -57,21 +58,33 @@ This could be seen as an advanced feature, but it feels at odds with the design 
 
 When I've encountered similar design problems in the past, I've always found a solution by breaking up the idea into more modular pieces. For example, instead of a furnace, there is a crucible and heater as separate buildings. (There even used to be something called a "caster" that would handle resolidifying the molten metal into an ingot). 
 
-Taking a look at the chest, the obvious solution would be to separate the storage functionality from the belt. All this means is that the storage would be a modular attachment that could be added to a belt. 
+Applying this to the chest, the obvious solution would be to separate the storage component from the belt. In game, this could mean that the storage is an attachment that you place on top of a belt. Functionally, this would behave the same way as the original chest design, but it requires the player to choose and place the storage according to their needs. And the player could also add this storage module to other buildings that is compatible with, increasing the possibility space.
 
-### Indicator
+This idea of a separate storage module is pretty similar to the hopper design. A hopper can be placed on top of a belt and get most of the functionality of a belt-chest. Although, at the moment, the hopper cannot suck up items from the belt into its storage, it can only output items. This has me wondering if there could be something like the reverse of a hopper that sucks up all items beneath it. Or perhaps there is a way to flip a hopper upside down to toggle it to "input mode". 
+
+## Storage Indicators
+
+<!-- gif of indicators -->
 
 One of the subtle differences between the hopper and the chest is that the hopper's indicator doesn't account for the item in the top slot. This is because I wanted the indicator to represent the items *inside* the hopper, not any outside, such as the item in the top slot. At first, the chest indicator also worked this way, but I realized that, if the chests were empty, it was difficult to see any items passing through. 
 
 At the moment, I still prefer the hopper's indicator design. It doesn't feel like the item on top should be occupying any space inside the hopper. But I also don't like that the chest and hopper have inconsistent indicators. Perhaps there is another way to solve the visibility problem of items passing through empty chests. Or I can just make both function like the chest indicator. 
 
-One of the design goals for Automation Station is to give the player a bunch of modular pieces and let them combine them in creative ways to solve whatever problem they are faced with. Each of these modular pieces is intended to be simple and unique. With the chest and the hopper, there are now two different buildings that provide solutions for item storage. Both buildings can store, receive, and output items, albeit in slightly different ways. 
+## Storage Next Steps
+
+As you can probably tell from all the design considerations above, I think there is still a lot to figure out when it comes to item storage. For now, I have two options fully implemented that I'm reasonably happy with. Based on feedback from playtesting, I'll evaluate what changes need to be made and perhaps cut or consolidate the available item storage buildings. Let me know in the comments below or in Discord if you have thoughts about item storage or feedback on the new hopper and chest.
 
 ## Platforms
 
+Besides item storage buildings, one of the other new additions in the last couple weeks are **Platforms**. Platforms are a new basic building block that allow you to position your other buildings at specific heights. Most buildings can be placed on top of a platforms, including other platforms. This is incredibly useful in combination with ramps to get items up high, such as the top of a hopper.
 
+<!-- gif of platform to hopper -->
+
+I'm not totally sure if platforms will stay in the game in the current form. One of the cool puzzle aspects of Automation Station is figuring out how to place things around the terrain to leverage existing cliffs. The addition of platforms completely removes that challenge. However, I do find them incredibly useful for debugging certain features, so I've gone ahead and added them for now. 
 
 ## Changelog:
+
+The hopper and chest both required a lot of work throughout the rest of the codebase to support their functionality. For example, I had to refactor the entire item routing system (again) to allow the hopper to drop items directly below it. Due to the complexity and interplay of all the game's systems, these small changes take a lot of time and careful thought to get right. Below is the full list of the notable changes from the last two weeks.
 
 Here are all the changes since the last devlog:
 - Add support for non-full chest receiving items even when slot is occupied
@@ -90,5 +103,7 @@ Here are all the changes since the last devlog:
 - Rewrite item routing logic to support a 3D voxel grid. Items can now be transferred vertically.
 - Added support for non-empty hopper dropping items beneath it
 - Implemented custom manual interactions for the hopper that support hold to fill or empty
+
+As always, thanks for taking the time to read this devlog! My next big task will tackling progression systems in an effort to turn this bag of systems into an actual game. Stay tuned for another devlog in a couple of weeks!
 
 -Scott
