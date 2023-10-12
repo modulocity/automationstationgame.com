@@ -10,7 +10,7 @@ Welcome back to another devlog for Automation Station! If you read the last devl
 
 ## Chest
 
-First up is the **Chest**. The chest can currently store up to 10 items of a the same type, although I expect to increase that number based on playtesting. The chest features a belt input and output port, allowing you to connect conveyor belts directly to it. As items enter the chest, they will pass through the chest and exit on to any output belt if there is one and there is room. If the item cannot be sent to the output, it will be stored inside the chest, appearing in the top slot. As more items enter the chest, the circular indicator will fill up to show how full it is. Likewise, whenever items leave the chest, the indicator will drop. The item in the top slot will drop down to the output belt when the chest is sending its last item.
+First up is the **Chest**. The chest can currently store up to 10 items of a the same type, although I expect to increase that number based on playtesting. The chest features a belt input and output port, allowing you to connect conveyor belts directly to it. As items enter the chest, they will pass through the chest and exit on to any output belt if there is one and there is room. If the item cannot be sent to the output, it will be stored inside the chest, appearing in the top slot. As more items enter the chest, the circular indicator will fill up to show how full it is. Likewise, whenever items leave the chest, the indicator will lower accordingly. The item in the top slot will drop down to the output belt when the chest is sending its last item.
 
 Here is what it looks like in game:
 
@@ -34,13 +34,38 @@ The hopper is mostly intended as a way to add an inventory to the input side of 
 
 <!-- gif of hopper top loading -->
 
-Finally, just like the chest, the hopper can be loaded or emptied manually with the same interactions.
+And, just like the chest, the hopper can be loaded or emptied manually with the same interactions.
 
 <!-- gif of hopper manual interactions -->
 
-## Item Storage Design
 
-One of the design goals for Automation Station is to give the player a bunch of modular pieces and let them combine them in creative ways to solve whatever problem they are faced with. Each of these modular pieces is intended to be simple and unique. With the chest and the hopper, there are now two different buildings that provide solutions for item storage. Both buildings can store, receive, and output items, albeit in different ways. 
+## Item Storage Design Considerations
+
+### Two Storage Options
+
+You might be wondering why there are two item storage buildings. Both the chest and hopper can receive and output items, albeit in slgihtly different ways, and store 10 items internally. This overlap in design isn't inherently bad as it gives the player more options. However, it can also be a little confusing and misleading. For example, if the player wants to store some crafted items at the end of an assembly line, they might try to use the hopper. While this works, it is more awkward to use for receiving items due to the height of the top slot. Alternatively, if the player wants to queue up a bunch of iron ore to be smelted, they could use a chest and ramp to deliver some ore to a crucible, but it is much more straightforward to place a hopper directly on top of the crucible.
+
+Initially, I only wanted one item storage building. However, I struggled to come up with a single design that met all of my design goals. I wanted a storage solution that could be used in the early game to enable smelting in batches rather than one a time. In terms of progression, it would be ideal if the storage building didn't require the use of conveyor belts. This is where the idea of the stackable hopper came from. But I also wanted a storage building to collect items at the end of some production chain, so a design like the chest made more sense.
+
+One possibility is to tweak the functionality of the hopper and chest so that they no longer overlap. Perhaps the hopper cannot receive items into the top slot in an automated fashion. This would make it only useful as an input inventory that has to be filled manually. And perhaps the chest can only receive items, requiring the player to manually retrieve them when needed. 
+
+### Chests > Belts?
+
+After implementing the chest, I realized that it is essentially identical to a normal conveyor belt, just with the extra ability to store extra items. Any time you would normally use a straight conveyor belt, you could instead use a chest without any real downsides. In fact, I can imagine that some players using chests everywhere in place of belts as a way to add buffers to their production chains. 
+
+This could be seen as an advanced feature, but it feels at odds with the design of Automation Station thus far. All of the buildings are modular primitives that are intended to be combined in a different ways. The fun of the game is figuring out to combine these primitives to solve a goal. The chest design I've shown is basically a combination of a belt and a storage chest. It feels like it is doing too much, especially when half of it (the belt) already exists as another building in the game. 
+
+When I've encountered similar design problems in the past, I've always found a solution by breaking up the idea into more modular pieces. For example, instead of a furnace, there is a crucible and heater as separate buildings. (There even used to be something called a "caster" that would handle resolidifying the molten metal into an ingot). 
+
+Taking a look at the chest, the obvious solution would be to separate the storage functionality from the belt. All this means is that the storage would be a modular attachment that could be added to a belt. 
+
+### Indicator
+
+One of the subtle differences between the hopper and the chest is that the hopper's indicator doesn't account for the item in the top slot. This is because I wanted the indicator to represent the items *inside* the hopper, not any outside, such as the item in the top slot. At first, the chest indicator also worked this way, but I realized that, if the chests were empty, it was difficult to see any items passing through. 
+
+At the moment, I still prefer the hopper's indicator design. It doesn't feel like the item on top should be occupying any space inside the hopper. But I also don't like that the chest and hopper have inconsistent indicators. Perhaps there is another way to solve the visibility problem of items passing through empty chests. Or I can just make both function like the chest indicator. 
+
+One of the design goals for Automation Station is to give the player a bunch of modular pieces and let them combine them in creative ways to solve whatever problem they are faced with. Each of these modular pieces is intended to be simple and unique. With the chest and the hopper, there are now two different buildings that provide solutions for item storage. Both buildings can store, receive, and output items, albeit in slightly different ways. 
 
 ## Platforms
 
