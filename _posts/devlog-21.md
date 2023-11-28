@@ -10,11 +10,11 @@ Welcome to the 21st devlog for Automation Station! I've spent the last month ite
 
 ## Decryption Revisited
 
-In the previous devlog ([devlog #20](/blog/devlog-20)), I introduced the new decryption mechanic. To recap, **Caches** scattered throughout the world require specific resources to unlock. Upon unlocking, an encrypted cartridge can be obtained, which requires a visit to a Decrypter for decryption. Once completed, a new building schematic or recipe is revealed.
+In the previous devlog ([devlog #20](/blog/devlog-20)), I introduced the new decryption mechanic. To recap, **Caches** scattered throughout the world require specific resources to unlock. Upon unlocking, an encrypted cartridge can be obtained, which requires a visit to a **Decrypter** for decryption. Once completed, a new building schematic or recipe is revealed.
 
-Overall, I think this progression mechanic has a lot of potential. The game loop of discovering caches, collecting and crafting items to unlock them, and speculating about the contents of the cartridge is fun and rewarding. It also eliminates the need for a traditional tech tree, allowing players to carve their unique path through the game's technologies. 
+Overall, I think this progression mechanic has a lot of potential. The game loop of discovering caches, collecting and crafting items to unlock them, and speculating about the contents of the cartridge is fun and rewarding. It also eliminates the need for a traditional tech tree, allowing players to carve their unique path through the game's technologies.
 
-However, there were still a lot of details to figure out with how this whole process looks and feels. How does the player track the decryption process? How do do they know what they unlocked? I set out to answer these questions. 
+However, there were still a lot of details to figure out regarding how this whole process looks and feels. How does the player track the decryption process? How do they know what they unlocked? I set out to answer these questions.
 
 ### First Attempt
 
@@ -24,21 +24,21 @@ The most obvious missing piece was some amount of UI that told the player how fa
   <source src="https://i.imgur.com/y2yejpq.mp4" type="video/mp4" />
 </video>
 
-There is a lot to unpack in this gif. As a cartridge is placed in the Decrypter, a progress bar appears in the top left of the screen. Normally it won't fill up quite so fast, so this serves as a way to track the progress of the decryption. Once completed, it flashes, signaling the opportunity to claim the new unlock by clicking on the UI. 
+There is a lot to unpack in this gif. As a cartridge is placed in the Decrypter, a progress bar appears in the top left of the screen. Normally, it won't fill up quite so fast, so this serves as a way to track the progress of the decryption. Once completed, it flashes, signaling the opportunity to claim the new unlock by clicking on the UI.
 
 There is a new set of shortcuts in the top right of the screen for navigation ease, especially for new players. Once a new building is unlocked, small notification bubbles will appear on the build mode shortcut and the newly unlocked building in the build mode toolbar.
 
 ### Identifying problems
 
-While I was reasonably happy with how this was looking, I knew there were some problems with it. But I was having trouble figuring out exactly what the problems were or how to improve it. I decided to show a preview of the decryption mechanic to a friend and received some great critical feedback for some of the problems with this design.  
+While I was reasonably happy with how this was looking, I knew there were some problems with it. But I was having trouble figuring out exactly what the problems were or how to improve it. I decided to show a preview of the decryption mechanic to a friend and received some great critical feedback for some of the problems with this design.
 
-The first problem was how the decryption progress bar felt awkward and inconsistent with the rest of the game. Generally, I opt for more diegetic and physical interactions instead of relying on UI. A great example of this is how the player has to physically slot a cartridge in the decrypter to kick of the decryption instead of opening a menu. However, once the cartridge was slotted, it suddenly requires the player to watch and interact with a piece of UI in the top left of the screen. This is awkward and feels unnecessary. The main reason for doing it this way originally was simply for convenience. That way, the player could claim an unlock from anywhere on the map. But because the player has to be there to physically slot in the next cartridge, I don't think this is actually an important part of the design to keep.
+The first problem was how the decryption progress bar felt awkward and inconsistent with the rest of the game. Generally, I opt for more diegetic and physical interactions instead of relying on UI. A great example of this is how the player has to physically slot a cartridge in the Decrypter to kick off the decryption instead of opening a menu. However, once the cartridge was slotted, it suddenly requires the player to watch and interact with a piece of UI in the top left of the screen. This is awkward and feels unnecessary. The main reason for doing it this way originally was simply for convenience. That way, the player could claim an unlock from anywhere on the map. But because the player has to be there to physically slot in the next cartridge, I don't think this is actually an important part of the design to keep.
 
-The second piece of feedback was how the progress bar being visible at all times added a sense of urgency. When players can see the progress like this, they might be incentivized to minimize downtime on the Decrypter by being ready to immediately claim and slot the next cartridge. But this feeling of urgency is completely at odds with the cozy vibes that I'm hoping to give to players. Looking back on this now, I also think the UI is distracting, pulling your attention even when its not finished.
+The second piece of feedback was how the progress bar being visible at all times added a sense of urgency. When players can see the progress like this, they might be incentivized to minimize downtime on the Decrypter by being ready to immediately claim and slot the next cartridge. But this feeling of urgency is completely at odds with the cozy vibes that I'm hoping to give to players. Looking back on this now, I also think the UI is distracting, pulling your attention even when it's not finished.
 
-The final piece of feedback was on the claim step. Once the decryption is finished, the player needs to claim the new unlock. But when they do so, they just see the small notification bubble on the build mode shortcut. This feels very anticlimatic, especially when this is supposed to be the players reward for successfully unlocking and decrypting the cartridge. 
+The final piece of feedback was on the claim step. Once the decryption is finished, the player needs to claim the new unlock. But when they do so, they just see the small notification bubble on the build mode shortcut. This feels very anticlimactic, especially when this is supposed to be the player's reward for successfully unlocking and decrypting the cartridge.
 
-Now you might be wondering why have the claim step at all. It would work perfectly fine for the new building to be unlocked as soon as the decryption is complete. However, I was worried that players might miss or dismiss a new unlock without the explicit step of needing to claim it. I also think there is a bigger dopamine hit when you have to manually click a button to get the reward. To double check my instincts, I put out a poll on the game's Discord. The overwhelming majority said they preferred manually claiming new unlocks as well as not knowing what the unlocks are until they are claimed. 
+Now you might be wondering why have the claim step at all. It would work perfectly fine for the new building to be unlocked as soon as the decryption is complete. However, I was worried that players might miss or dismiss a new unlock without the explicit step of needing to claim it. I also think there is a bigger dopamine hit when you have to manually click a button to get the reward. To double-check my instincts, I put out a poll on the game's Discord. The overwhelming majority said they preferred manually claiming new unlocks as well as not knowing what the unlocks are until they are claimed.
 
 ## Improving the flow
 
@@ -48,11 +48,11 @@ Based on this feedback and figuring out the problems with the current design, I 
   <source src="https://i.imgur.com/5PH5Ulc.mp4" type="video/mp4" />
 </video>
 
-My fix for the awkward and inconsistent progress bar was to simply remove it. There is already a progress bar on decrypter itself so players can still see how far along it is. I also added a little notification that appears when the decryption is complete so that player's don't have to constantly check progress. However, instead of claiming the unlock in the UI, you now have to click on the glowing cartridge instead.
+My fix for the awkward and inconsistent progress bar was to simply remove it. There is already a progress bar on the Decrypter itself, so players can still see how far along it is. I also added a little notification that appears when the decryption is complete, so that players don't have to constantly check progress. However, instead of claiming the unlock in the UI, you now have to click on the glowing cartridge instead.
 
 As you can see, the claim step was completely redone. This time with a lot more particle effects 😁.
 
-After you click on the cartridge, the glow pulse speeds up and a beam of light shoots out of it. After a couple of seconds, the cartridge explodes into digital-particle-goodness. There is also a pop up that tells you exactly what you unlocked right at the center of your screen where you can't miss it.
+After you click on the cartridge, the glow pulse speeds up, and a beam of light shoots out of it. After a couple of seconds, the cartridge explodes into digital-particle-goodness. There is also a pop-up that tells you exactly what you unlocked right at the center of your screen where you can't miss it.
 
 What are your thoughts on this version of the decryption mechanic? Does it feel like an improvement, or are there further adjustments needed? Share your feedback in the comments below or on Discord.
 
@@ -64,9 +64,9 @@ While the majority of the sprint was spent on the decryption feature, I also wor
 
 A common programming challenge is figuring out how to design a system that is flexible in all the ways you want it. You don't want to overengineer something, but you also don't want to make it impossible to support a feature later on. My latest example of this was the slot restriction system.
 
-Consider the crucible and the hopper. Both buildings have a slot that can hold items. The crucible is only able to smelt stuff like raw ore, so it makes sense to limit the slot to only smeltable things and prevent all other items from entering. Meanwhile, the hopper can accept any type of item. But once it contains an item, it can only accept more items of the same type. Both are examples of places where I want to restrict the item slot. 
+Consider the crucible and the hopper. Both buildings have a slot that can hold items. The crucible is only able to smelt stuff like raw ore, so it makes sense to limit the slot to only smeltable things and prevent all other items from entering. Meanwhile, the hopper can accept any type of item. But once it contains an item, it can only accept more items of the same type. Both are examples of places where I want to restrict the item slot.
 
-In a more object-oriented project, you could imagine making the crucible and hopper both inherit from some kind of slottable class. Then each building could override the behavior for checking if an incoming item is valid. This could work great, but it isn't really compatible with the data-oriented design philosophy. Automation Station is built on Unity's Data-oriented Tech Stack (or DOTS) and Entity Component System (ECS), that treats "objects" as purely data associated with a given entity ID. All of the logic happens inside of systems which aren't tied to any particular objects. 
+In a more object-oriented project, you could imagine making the crucible and hopper both inherit from some kind of slottable class. Then each building could override the behavior for checking if an incoming item is valid. This could work great, but it isn't really compatible with the data-oriented design philosophy. Automation Station is built on Unity's Data-oriented Tech Stack (or DOTS) and Entity Component System (ECS), which treats "objects" as purely data associated with a given entity ID. All of the logic happens inside of systems which aren't tied to any particular objects.
 
 So how can I represent slot restrictions as data?
 
@@ -76,25 +76,25 @@ To support the crucible, I had to provide a list of all of the smeltable items t
 
 Ideally, I could just specify that the crucible accepts all items that are "smeltable". But how do I know what items are "smeltable"?
 
-ECS allows items to have empty components on them which work great as a way to tag a group of entities that have some common property. However, there isn't an easy way to store a list of those types since types aren't really the same thing as data. *(For any ECS experts reading, it is possible to store a list of component type indices, but these are not deterministic across builds. I also found this method to be a lot more complicated than my solution below)*
+ECS allows items to have empty components on them which work great as a way to tag a group of entities that have some common property. However, there isn't an easy way to store a list of those types since types aren't really the same thing as data. (For any ECS experts reading, it is possible to store a list of component type indices, but these are not deterministic across builds. I also found this method to be a lot more complicated than my solution below)
 
 My solution was to create something similar called a "Trait". Items could then store a list of traits on them that they belong to. Meanwhile, a building could store a list of valid traits for items in its slot. Thus, all ores have the "Smeltable" trait and the Crucible only allows items with the "Smeltable" trait.
 
-So what exactly is a trait? Internally, I use something called a GUID, or Globally Unique Identifier, for each trait. This is just a 128 bit number that can uniquely identify something. Thus, each trait has a unique GUID. These are generated at random when I need a new trait. It turns out that 128 bits is big enough that the probability of two randomly generated GUIDs is effectively zero. Even if the player added thousands of mods, each adding a bunch of traits, there would be virtually no chance that there are any duplicate GUIDs.
+So what exactly is a trait? Internally, I use something called a GUID, or Globally Unique Identifier, for each trait. This is just a 128-bit number that can uniquely identify something. Thus, each trait has a unique GUID. These are generated at random when I need a new trait. It turns out that 128 bits are big enough that the probability of two randomly generated GUIDs is effectively zero. Even if the player added thousands of mods, each adding a bunch of traits, there would be virtually no chance that there are any duplicate GUIDs.
 
-Now I have a simple and flexible way to tag and refer to a group of entities that all share some property. 
+Now I have a simple and flexible way to tag and refer to a group of entities that all share some property.
 
 ### Debug Menus
 
-Up until recently, the game has much been closer to a creative sandbox game than an actual automation game with progression. All of the buildings use to be unlocked immediately and I could just start building whatever I wanted. But with the new addition of the decrypter, there is now a process to unlocking buildings. That means that when I want to test out something, I first need to unlock the required buildings.
+Up until recently, the game has been much closer to a creative sandbox game than an actual automation game with progression. All of the buildings used to be unlocked immediately, and I could just start building whatever I wanted. But with the new addition of the Decrypter, there is now a process to unlocking buildings. That means that when I want to test out something, I first need to unlock the required buildings.
 
-Now obviously, I could just hack in a keyboard shortbut to unlock all buildings with a single keypress. In fact, that is what I did at first. But, over the game's development, I've added so many of these that I'm starting to forget what key does what. This solution simply doesn't scale well.
+Now obviously, I could just hack in a keyboard shortcut to unlock all buildings with a single keypress. In fact, that is what I did at first. But, over the game's development, I've added so many of these that I'm starting to forget what key does what. This solution simply doesn't scale well.
 
-Ideally, all of these kinds of keyboard shortcuts would instead have corresponding settings and buttons in some kind of debug UI that I could easily open and browse in game. But if you've worked on any kind of UI before, you know that adding UI is almost never easy, and definitely not for me. 
+Ideally, all of these kinds of keyboard shortcuts would instead have corresponding settings and buttons in some kind of debug UI that I could easily open and browse in the game. But if you've worked on any kind of UI before, you know that adding UI is almost never easy, and definitely not for me.
 
-Despite that, I realized that I really should spend some time to create a little debug settings menu instead of adding yet-another-shortcut. But in the process of doing so, I realized that I was doing a lot of similar steps. For each debug setting I wanted to add, I would add either a checkbox, slider, textbox, or button and then wire it up to the piece of data I wanted it to. Once I see that kind of repetition, the programmer and automation-game-player in me instantly wants to try and figure out how to automate it. 
+Despite that, I realized that I really should spend some time to create a little debug settings menu instead of adding yet-another-shortcut. But in the process of doing so, I realized that I was doing a lot of similar steps. For each debug setting I wanted to add, I would add either a checkbox, slider, textbox, or button and then wire it up to the piece of data I wanted it to. Once I see that kind of repetition, the programmer and automation-game-player in me instantly wants to try and figure out how to automate it.
 
-So... that's what I did. Now this may not seem like the highest priority feature to spend my time on, and you'd be right. But I had a lot of fun conquering this programming puzzle and I think the final result will actually save me a lot of time in the long run.
+So... that's what I did. Now this may not seem like the highest priority feature to spend my time on, and you'd be right. But I had a lot of fun conquering this programming puzzle, and I think the final result will actually save me a lot of time in the long run.
 
 Here is what the debug menu looks like:
 
@@ -102,7 +102,7 @@ Here is what the debug menu looks like:
   <source src="https://i.imgur.com/pvodITR.mp4" type="video/mp4" />
 </video>
 
-As you can see, the debug menu automatically updates to reflect the game. Meanwhile, I can interact with the menu to update the game. The data is synced in both directions automcatically.
+As you can see, the debug menu automatically updates to reflect the game. Meanwhile, I can interact with the menu to update the game. The data is synced in both directions automatically.
 
 I realize that this doesn't look like much, but the magic is how it was created. To add the "Tick Progress" slider, I simply added a few C# attributes to the definition for the existing game component that stores the current tick progress. Here is what the code looks like:
 
@@ -143,9 +143,9 @@ public struct DebugSettings : IComponentData
 }
 ```
 
-The best part is how painless it is to add stuff to the debug menu. That means there is a half decent chance I'll actually use it instead of resorting to print statements when I'm debugging. The only thing I had to do was add those attributes like `[DebugMenu]` and `[Category("Clock")]`. The rest of the stuff was already there for existing game systems. That is actually one of the most important goals of this system. The game code isn't aware of the debug menu and doesn't need to remember to update the debug menu when the underlying data changes.
+The best part is how painless it is to add stuff to the debug menu. That means there is a half-decent chance I'll actually use it instead of resorting to print statements when I'm debugging. The only thing I had to do was add those attributes like `[DebugMenu]` and `[Category("Clock")]`. The rest of the stuff was already there for existing game systems. That is actually one of the most important goals of this system. The game code isn't aware of the debug menu and doesn't need to remember to update the debug menu when the underlying data changes.
 
-After I had the debug menu working, I was able to easily add another debug feature I had been wanting using the same system. Basically, I can now hover any object in the game and pull up data on the object, such as its position, facing, altitude, etc. This can be extended by simply adding an attribute to any component type I want. I think this will be invaluable when I'm trying to debug something that is only happening in a build so I can't use my normal debugging tools that are only available in the editor.
+After I had the debug menu working, I was able to easily add another debug feature I had been wanting using the same system. Basically, I can now hover any object in the game and pull up data on the object, such as its position, facing, altitude, etc. This can be extended by simply adding an attribute to any component type I want. I think this will be invaluable when I'm trying to debug something that is only happening in a build, so I can't use my normal debugging tools that are only available in the editor.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/7SVNaFi.mp4" type="video/mp4" />
@@ -155,7 +155,7 @@ If you are working on your own ECS project and thing this would be useful, pleas
 
 ## Wrap up
 
-That's all for this devlog! Thanks for making it this far and hopefully I didn't bore you with all the technical details. In this next sprint, I will be continuing to work on the progression mechanics including island unlocking, so stay tuned for the next devlog! 
+That's all for this devlog! Thanks for making it this far and hopefully I didn't bore you with all the technical details. In the next sprint, I will be continuing to work on the progression mechanics including island unlocking, so stay tuned for the next devlog! 
 
 ## Changelog:
 
