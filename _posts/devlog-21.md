@@ -6,29 +6,29 @@ tags:
   - Devlog
 ---
 
-Welcome to the 21st devlog for Automation Station! I've spent the last month iterating on and adding new features to the game. Read on to see all the changes I made to the decryption mechanic as well as some technical deep dives into a couple of interesting programming tasks I solved recently.
+Welcome to the 21st devlog for Automation Station! I've spent the last month iterating on and adding new features to the game. Read on to discover the significant changes made to the decryption mechanic and explore the technical challenges I've recently tackled.
 
-## Decription Revisited
+## Decryption Revisited
 
-In the last devlog ([devlog #20](/blog/devlog-20)), I showed off the new decryption mechanic which serves as the primary way to unlock new buildings and recipes in the game. To summarize, **Caches** are hidden throughput the world that must be unlocked with certain resources. Once unlocked, you'll be able to retrieve the encrypted cartridge inside. These cartridges must be taken to a **Decrypter** to be decrypted. After some time, the decryption will be complete and you'll be able to retrieve the new building schematic or recipe that was contained inside.
+In the previous devlog ([devlog #20](/blog/devlog-20)), I introduced the new decryption mechanic. To recap, **Caches** scattered throughout the world require specific resources to unlock. Upon unlocking, an encrypted cartridge can be obtained, which requires a visit to a Decrypter for decryption. Once completed, a new building schematic or recipe is revealed.
 
-Overall, I'm pretty happy with this mechanic. It is quite satisfying to discover one of these caches and try to guess what you might unlock from the cartridge inside. I also like how it avoids the need for a traditional tech tree, instead allowing the player to feel like they are finding their own path through the game's technologies. 
+Overall, I think this progression mechanic has a lot of potential. The game loop of discovering caches, collecting and crafting items to unlock them, and speculating about the contents of the cartridge is fun and rewarding. It also eliminates the need for a traditional tech tree, allowing players to carve their unique path through the game's technologies. 
 
-## Trying a Decryption UI
+However, there were still a lot of details to figure out with how this whole process looks and feels. How does the player track the decryption process? How do do they know what they unlocked? I set out to answer these questions. 
 
-What I showed off in the last devlog was a preview of how the process would look and behave. However, I had not implemented the actual functionality of unlocking a new building nor figured out what kind of UI would be necessary at different points in the decryption process. After relearning how to work with the UI framework and lot of fiddling with the visuals, I came up with this:
+### First Attempt
+
+The most obvious missing piece was some amount of UI that told the player how far along the decryption was and what they unlocked when complete. My first attempt at this looked like this:
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/y2yejpq.mp4" type="video/mp4" />
 </video>
 
-There is a lot to unpack in this gif. Firstly, you'll notice that as soon as a cartridge is placed in the Decrypter, a new progress bar appears in the top left of the screen. Normally it won't fill up quite so fast, so this serves as a way to track the progress of the decryption. Once complete, it will flash, prompting you to click on the UI to claim the new unlock. Once you do, the UI will update to show the building that was just unlocked for build mode.
+There is a lot to unpack in this gif. As a cartridge is placed in the Decrypter, a progress bar appears in the top left of the screen. Normally it won't fill up quite so fast, so this serves as a way to track the progress of the decryption. Once completed, it flashes, signaling the opportunity to claim the new unlock by clicking on the UI. 
 
-Build mode can be opened with the Tab key like normal, but there is now a set of shortcuts in the top right that includes a button for build mode as well as the settings menu. I think having these buttons onscreen at all times helps new players learn how to navigate the menus. 
+There is a new set of shortcuts in the top right of the screen for navigation ease, especially for new players. Once a new building is unlocked, small notification bubbles will appear on the build mode shortcut and the newly unlocked building in the build mode toolbar.
 
-When the new building is unlocked, a little notification bubble appears on the build mode button as well as on the new building in the build mode toolbar. These serve as a trail of breadcrumbs to help you find the new thing they unlocked, which is especially useful later in the game when you have a bunch of buildings filling up the build mode toolbar.
-
-## Identifying problems
+### Identifying problems
 
 While I was reasonably happy with how this was looking, I knew there were some problems with it. But I was having trouble figuring out exactly what the problems were or how to improve it. I decided to show a preview of the decryption mechanic to a friend and received some great critical feedback for some of the problems with this design.  
 
@@ -54,7 +54,7 @@ As you can see, the claim step was completely redone. This time with a lot more 
 
 After you click on the cartridge, the glow pulse speeds up and a beam of light shoots out of it. After a couple of seconds, the cartridge explodes into digital-particle-goodness. There is also a pop up that tells you exactly what you unlocked right at the center of your screen where you can't miss it.
 
-So, what do you think of this version of the decryption mechanic? Is it an improvement? Are there still things you would change? Let me know in the comments below or on Discord.
+What are your thoughts on this version of the decryption mechanic? Does it feel like an improvement, or are there further adjustments needed? Share your feedback in the comments below or on Discord.
 
 ## Technical Tidbits
 
