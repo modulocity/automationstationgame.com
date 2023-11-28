@@ -6,7 +6,7 @@ tags:
   - Devlog
 ---
 
-Welcome to the 21st devlog for Automation Station! The past month has been packed with numerous features, enhancements and refinements. The primary focus of this sprint was to finish implementing the decryption mechanic, although I ended up spending quite a bit of time iterating on the overall decryption flow, as you'll see below.
+Welcome to the 21st devlog for Automation Station! I've spent the last month iterating on and adding new features to the game. Read on to see all the changes I made to the decryption mechanic as well as some technical deep dives into a couple of interesting programming tasks I solved recently.
 
 ## Decription Revisited
 
@@ -86,6 +86,77 @@ Now I have a simple and flexible way to tag and refer to a group of entities tha
 
 ### Debug Menus
 
+Up until recently, the game has much been closer to a creative sandbox game than an actual automation game with progression. All of the buildings use to be unlocked immediately and I could just start building whatever I wanted. But with the new addition of the decrypter, there is now a process to unlocking buildings. That means that when I want to test out something, I first need to unlock the required buildings.
+
+Now obviously, I could just hack in a keyboard shortbut to unlock all buildings with a single keypress. In fact, that is what I did at first. But, over the game's development, I've added so many of these that I'm starting to forget what key does what. This solution simply doesn't scale well.
+
+Ideally, all of these kinds of keyboard shortcuts would instead have corresponding settings and buttons in some kind of debug UI that I could easily open and browse in game. But if you've worked on any kind of UI before, you know that adding UI is almost never easy, and definitely not for me. 
+
+Despite that, I realized that I really should spend some time to create a little debug settings menu instead of adding yet-another-shortcut. But in the process of doing so, I realized that I was doing a lot of similar steps. For each debug setting I wanted to add, I would add either a checkbox, slider, textbox, or button and then wire it up to the piece of data I wanted it to. Once I see that kind of repetition, the programmer and automation-game-player in me instantly wants to try and figure out how to automate it. 
+
+So... that's what I did. Now this may not seem like the highest priority feature to spend my time on, and you'd be right. But I had a lot of fun conquering this programming puzzle and I think the final result will actually save me a lot of time in the long run.
+
+Here is what the debug menu looks like:
+
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/pvodITR.mp4" type="video/mp4" />
+</video>
+
+As you can see, the debug menu automatically updates to reflect the game. Meanwhile, I can interact with the menu to update the game. The data is synced in both directions automcatically.
+
+I realize that this doesn't look like much, but the magic is how it was created. To add the "Tick Progress" slider, I simply added a few C# attributes to the definition for the existing game component that stores the current tick progress. Here is what the code looks like:
+
+```cs
+public struct Clock : IComponentData
+{
+    public double ElapsedTicks;
+
+    public float DeltaTick;
+
+    [DebugMenu]
+    [Category("Clock")]
+    [MinMaxSlider(0, 1)]
+    [ReadOnly]
+    public float TickProgress
+    {
+        get
+        {
+            float fraction = (float)math.frac(ElapsedTicks);
+            return fraction > 0 ? fraction : 1.0f;
+        }
+    }
+}
+```
+
+For the tick rate buttons, I have the following:
+
+```cs
+public struct DebugSettings : IComponentData
+{
+    [DebugMenu]
+    [Category("Clock")]
+    public ButtonEvent SpeedUpTick;
+
+    [DebugMenu]
+    [Category("Clock")]
+    public ButtonEvent SlowDownTick;
+}
+```
+
+The best part is how painless it is to add stuff to the debug menu. That means there is a half decent chance I'll actually use it instead of resorting to print statements when I'm debugging. The only thing I had to do was add those attributes like `[DebugMenu]` and `[Category("Clock")]`. The rest of the stuff was already there for existing game systems. That is actually one of the most important goals of this system. The game code isn't aware of the debug menu and doesn't need to remember to update the debug menu when the underlying data changes.
+
+After I had the debug menu working, I was able to easily add another debug feature I had been wanting using the same system. Basically, I can now hover any object in the game and pull up data on the object, such as its position, facing, altitude, etc. This can be extended by simply adding an attribute to any component type I want. I think this will be invaluable when I'm trying to debug something that is only happening in a build so I can't use my normal debugging tools that are only available in the editor.
+
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/7SVNaFi.mp4" type="video/mp4" />
+</video>
+
+If you are working on your own ECS project and thing this would be useful, please let me know. If there is enough interest, I'll open sourece the code for this debug menu system. 
+
+## Wrap up
+
+That's all for this devlog! Thanks for making it this far and hopefully I didn't bore you with all the technical details. In this next sprint, I will be continuing to work on the progression mechanics including island unlocking, so stay tuned for the next devlog! 
+
 ## Changelog:
 
 Here are all the significant changes since the last devlog:
@@ -124,3 +195,7 @@ Here are all the significant changes since the last devlog:
 - Refactored the debug menu system to support generic attribute-based UI generation with automatic binding to entity data
 - Added a new inspect menu to show debug component data for an "inspected" entity
 - Added new shortcut to inspect entity for debug information
+
+Hope you all have a great week!
+
+-Scott
