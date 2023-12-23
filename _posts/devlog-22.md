@@ -6,33 +6,35 @@ tags:
   - Devlog
 ---
 
-Happy holidays everyone! A lot has happened in the development of Automation Station in the last year. Since we are getting so close to the end of 2023, I thought it would be a good time to reflect back on all of the big changes and new features that have made their way into the game. I've written 19 devlogs since January of this year, so I'll do my best to condense all of that information as best I can.
+Happy holidays, everyone! A lot has happened in the development of Automation Station over the past year. As we approach the end of 2023, I thought it would be a good time to reflect on all the significant changes and new features that have made their way into the game. I've written 19 devlogs since January of this year, so I'll do my best to condense all of that information as best I can.
 
 ## Constructed Buildings
 
-In the first devlog of 2023 ([devlog #4](/blog/devlog-4)), I was debating how buildings should be made in Automation Station. Initially, I buildings came packaged in these little crates, but I quickly realized that it was too difficult to make each building crate unique and distinguishable.
+In the first devlog of 2023 ([devlog #4](/blog/devlog-4)), I debated how buildings should be made in Automation Station. Initially, buildings came packaged in these little crates, but I quickly realized that making each building crate unique and distinguishable was too difficult.
 
 ![Crates](/assets/images/devlogs/devlog_4/crates.gif)
 
-Then I tried creating miniature versions of the belts and other buildings to represent the "item form" of the building. While this looked adorable, this greatly complicated the controls for placing buildings, and creating the art for these miniature buildings was proving to be a lot of work. 
+Then, I tried creating miniature versions of the belts and other buildings to represent the "item form" of the building. While this looked adorable, it complicated the controls for placing buildings, and creating the art for these miniature buildings was proving to be a lot of work.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/uW0I188.mp4" type="video/mp4" />
 </video>
 
-Ultimately, I decided to go with a completely different approach. Rather than crafting the buildings in your factory, you only need to craft intermediate items, such as gears and plates. Buildings can then be constructed from these parts when placed. 
+Ultimately, I decided to go with a completely different approach. Rather than crafting the buildings in your factory, you only need to craft intermediate items, such as gears and plates. Buildings can then be constructed from these parts when placed.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/xkin2jE.mp4" type="video/mp4" />
 </video>
 
-## Backpack & Cliffs
+## Backpack
 
-In February ([devlog #5](/blog/devlog-5)), our little box bot friend got a backpack! Prior to this, you were only able to store 4 different items in your backpack, which proved to be extremely limiting in an automation game. 
+In February ([devlog #5](/blog/devlog-5)), our little box bot friend got a backpack! Prior to this, you were only able to store 4 different items in your backpack, which proved to be extremely limiting in an automation game.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/m2p8yk9.mp4" type="video/mp4" />
 </video>
+
+## Cliff Interactions
 
 While I added the cliffs near the end of 2022, I did a bunch of work to make all the buildings work with them. This made it possible to drop items off of cliffs or launch them up to the top.
 
@@ -42,7 +44,7 @@ While I added the cliffs near the end of 2022, I did a bunch of work to make all
 
 ## Playful Item Interactions
 
-In [devlog #6](/blog/devlog-6), I introduced a brand new system for interacting with items. This made it possible to pickup nearby items and place them in buildings without needing to aim precisely with a cursor. This also made it possible to support controllers in addition to mouse and keyboard.
+In [devlog #6](/blog/devlog-6), I introduced a brand new system for interacting with items. This made it possible to pick up nearby items and place them in buildings without needing to aim precisely with a cursor. This also made it possible to support controllers in addition to mouse and keyboard.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/Osy65dY.mp4" type="video/mp4" />
@@ -50,7 +52,7 @@ In [devlog #6](/blog/devlog-6), I introduced a brand new system for interacting 
 
 ## Item Toolbar
 
-While the backpack was great for increasing the player's storage, it had the downside of not being able to see what items you had nor a way to quickly access items. To address this, I added a toolbar which can be seen in [devlog #7](/blog/devlog-7). 
+While the backpack was great for increasing the player's storage, it had the downside of not being able to see what items you had nor a way to quickly access items. To address this, I added a toolbar which can be seen in [devlog #7](/blog/devlog-7).
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/jFB3q1D.mp4" type="video/mp4" />
@@ -58,7 +60,7 @@ While the backpack was great for increasing the player's storage, it had the dow
 
 ## Destructible Rocks
 
-In [devlog #8](/blog/devlog-8), I showed off a new method for mining ore. Using your trusty mining laser, you can heat up an ore-rich rock until it explodes into like chunks of ore, ready to be smelted.
+In [devlog #8](/blog/devlog-8), I showed off a new method for mining ore. Using your trusty mining laser, you can heat up an ore-rich rock until it explodes into chunks of ore, ready to be smelted.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/TlMAi3p.mp4" type="video/mp4" />
@@ -72,13 +74,13 @@ Next up was the Build Mode! At any point in the game, you can enter build mode, 
   <source src="https://i.imgur.com/lbKvnPY.mp4" type="video/mp4" />
 </video>
 
-The most common building is the conveyor belt, so I spent a bunch of time improving the belt placement tool, allowing you to quickly make paths around obstables and through your factory.
+The most common building is the conveyor belt, so I spent a bunch of time improving the belt placement tool, allowing you to quickly make paths around obstacles and through your factory.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/e0CRNty.mp4" type="video/mp4" />
 </video>
 
-You can read more about the build mode and the build menu in [devlog #8](/blog/devlog-8), [devlog #9](/blog/devlog-9) and [devlog #10](/blog/devlog-10).
+You can read more about the build mode and the build menu in [devlog #8](/blog/devlog-8), [devlog #9](/blog/devlog-9), and [devlog #10](/blog/devlog-10).
 
 ## A Change in Perspective
 
@@ -130,13 +132,13 @@ First up is the **Piston** which pushes an adjacent building over by one tile.
   <source src="https://i.imgur.com/DbGYoIi.mp4" type="video/mp4" />
 </video>
 
-The **Rotator** is able to rotate an adjacent building either clockwise or counter clockwise.
+The **Rotator** is able to rotate an adjacent building either clockwise or counterclockwise.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/cxma9vG.mp4" type="video/mp4" />
 </video>
 
-Finally, we have the **Orbiter** which orbits all adjacent buildings around it in a clockwise or counter clockwise fashion.
+Finally, we have the **Orbiter** which orbits all adjacent buildings around it in a clockwise or counterclockwise fashion.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/vCiPjai.mp4" type="video/mp4" />
@@ -144,7 +146,7 @@ Finally, we have the **Orbiter** which orbits all adjacent buildings around it i
 
 ## Auto-Pickup Items
 
-In [devlog #14](/blog/devlog-14), I made it so that loose items on the ground will be automatically picked up when the player gets close to them. This removed the needed to manually pickup each item one by one, which was especially useful for manually mining and extract resources.
+In [devlog #14](/blog/devlog-14), I made it so that loose items on the ground will be automatically picked up when the player gets close to them. This removed the need to manually pick up each item one by one, which was especially useful for manually mining and extracting resources.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/T1WY7Br.mp4" type="video/mp4" />
@@ -182,7 +184,7 @@ While part of me misses the old item balls, I think transitioning all of the ite
 
 ## Crafting, Finally!
 
-Automation Station has gone through several iterations on the design for a crafting system. I've tried a ton of unique and creative options for crafting, all of them had problems with how they interacted with the rest of the game's systems and art constraints. However, in September I finally added what I believe will closely represent the crafting system in the final game. 
+Automation Station has gone through several iterations on the design for a crafting system. I've tried a ton of unique and creative options for crafting; all of them had problems with how they interacted with the rest of the game's systems and art constraints. However, in September, I finally added what I believe will closely represent the crafting system in the final game.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/aKTjwqR.mp4" type="video/mp4" />
@@ -192,13 +194,13 @@ This new crafting mechanic is based on the item stacking. The player must constr
 
 ## Storage
 
-In [devlog #19](/blog/devlog-19), I showed off two new storage buildings that I added to the game. The **Chest** is able to receive and send items via connected conveyor belts, making it easy to create in-line buffers of items: 
+In [devlog #19](/blog/devlog-19), I showed off two new storage buildings that I added to the game. The **Chest** is able to receive and send items via connected conveyor belts, making it easy to create in-line buffers of items:
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/QwkYAzu.mp4" type="video/mp4" />
 </video>
 
-The **Hopper** is a building that can stack on top of other buildings, dropping items into them one at at ime.
+The **Hopper** is a building that can stack on top of other buildings, dropping items into them one at a time.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/2X3Hfyi.mp4" type="video/mp4" />
@@ -212,7 +214,7 @@ In October, I finally started working on some of the progression systems that wi
   <source src="https://i.imgur.com/cAtgdKo.mp4" type="video/mp4" />
 </video>
 
-Once the cartridge has been collected from a Cache, it must be decrypted. For this, I added a new **Decrypter** building that sits at the center of your starting island. This structure allows the player to decrypt cartridges retrieved from Caches in order to unlock a new building or recipe.
+Once a cartridge has been collected from a Cache, it must be decrypted. For this, I added a new **Decrypter** building at the center of the starting island. This structure allows players to decrypt cartridges retrieved from Caches to unlock new buildings or recipes.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/5PH5Ulc.mp4" type="video/mp4" />
@@ -222,12 +224,12 @@ You can read more about the progression mechanic in [devlog #20](/blog/devlog-20
 
 ## Conclusion
 
-That brings us to the end of 2023! It's been a busy year and the game has evolved a lot in that time. I tried to highlight most of the big and exciting new features, but there were a ton of other tweaks and changes that I left out. 
+That brings us to the end of 2023! It's been a busy year, and the game has evolved significantly during this time. I attempted to highlight most of the significant and exciting new features, but there were numerous other tweaks and changes that I omitted.
 
-While there is still a long road ahead, seeing everything I was able to get done in 2023 makes me super excited for 2024 and all that is to come with Automation Station.
+While there's still a long journey ahead, seeing everything I achieved in 2023 fills me with immense excitement for 2024 and the ongoing development of Automation Station.
 
-I want to give a big thanks to everyone who has been following along on this journey, especially those of you in our Discord server that regularly provide feedback and help me tackle design problems. The amount of support I've received has made me more motivated than ever to get this game to the finish line. 
+I want to express a huge thanks to everyone who has been following along on this journey, especially those of you in our Discord server who consistently provide feedback and assist me in addressing design problems. The level of support I've received has heightened my motivation to get this game to the finish line. 
 
-Happy holidays to everyone and I'll see you in 2024!
+Happy holidays and I look forward to seeing you all in 2024!
 
 ❤️ -Scott
