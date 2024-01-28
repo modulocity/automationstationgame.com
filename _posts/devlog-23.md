@@ -6,17 +6,17 @@ tags:
   - Devlog
 ---
 
-Hey folks! I can't believe we're already a month into 2024, but the development of Automation Station has been coming along nicely. In this devlog, I'll be talking about some additional features that I've added to **Build Mode**. Buildings now have a cost, consuming items from the your inventory when placed. And if you change your mind, you can always demolish the building to get those items back. I've also added several new indicators to help the player understand the orientation and behavior of several buildings.
+Hey folks! I can't believe we're already a month into 2024, but the development of Automation Station has been coming along nicely. In this devlog, I'll be talking about some additional features that I've added to **Build Mode**. Buildings now have a cost, consuming items from your inventory when placed. And if you change your mind, you can always demolish the building to get those items back. I've also added several new indicators to help the player understand the orientation and behavior of several buildings.
 
 ## Affordability
 
-For most of Automation Station's development, the game has been most a creative sandbox where the player can place buildings for free. This has been great for testing new systems and features, but the plan has always been to make buildings require items in order to build. I've finally implemented a system that checks for and consumes all the required items when constructing new buildings.
+For most of Automation Station's development, the game has been more of a creative sandbox where the player can place buildings for free. This has been great for testing new systems and features, but the plan has always been to make buildings require items in order to build. I've finally implemented a system that checks for and consumes all the required items when constructing new buildings.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/D8nqlG8.mp4" type="video/mp4" />
 </video>
 
-There are a few different things to unpack in this gif. While planning out the placement of new buildings, a panel in the bottom right will tally up the total cost of all of the buildings (ignore the overlapping panels, that is an artifact of the tiny resolution I'm recording at). If the player has all of the required items, the holograms will be blue, but if they can't they will turn red. Once placed, the building will be "constructed" and consume all of the required items. 
+There are a few different things to unpack in this gif. While planning out the placement of new buildings, a panel in the bottom right will tally up the total cost of all the buildings (ignore the overlapping panels; that is an artifact of the tiny resolution I'm recording at). If the player has all the required items, the holograms will be blue, but if they can't, they will turn red. Once placed, the building will be "constructed" and consume all the required items. 
 
 Also, the building previews now use the hologram shader that I showed off in ([devlog #20](/blog/devlog-20)). The hologram effect helps communicate that the building does not yet exist. This is especially important when considering that buildings can also be picked up and moved around. Since the building is already constructed, I just use a blue glow effect and raise the building up instead of using the hologram effect.
 
@@ -36,7 +36,7 @@ As you can see, demolishing a building will drop a bunch of items. These are the
 
 ## Indicators
 
-One of my design goals is to make all of the buildings super intuitive to use. However, there are still a lot of cases where the behavior isn't perfectly clear, especially with how a building will interact with others. To help with some of these problems, I added indicators to several buildings.
+One of my design goals is to make all the buildings super intuitive to use. However, there are still a lot of cases where the behavior isn't perfectly clear, especially with how a building will interact with others. To help with some of these problems, I added indicators to several buildings.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/oDxl3nA.mp4" type="video/mp4" />
@@ -58,7 +58,7 @@ I thought I'd wrap up this devlog with a preview of a little terraforming system
 
 While reworking some of the terrain systems, I realized that supporting terraforming in-game was actually quite easy to do. Even though this feature may never make it into the final game, I decided to try out and got it working in less than a day.
 
-If I wanted to add terraforming properly, there is still a ton of animation, particle, constrols, and UI work needed to make it look nice and integrate with the rest of the game. But, its still cool to see that terrain tile generation system was flexible and performant enough to support this in real time. 
+If I wanted to add terraforming properly, there is still a ton of animation, particle, controls, and UI work needed to make it look nice and integrate with the rest of the game. But, it's still cool to see that the terrain tile generation system was flexible and performant enough to support this in real time. 
 
 Just to be super clear, this was mostly a curiosity experiment and is not a guarantee that terraforming will be in the final version of the game. There are a lot of considerations to adding a terraforming system to the game, especially when it wasn't planned for from the beginning. The environment with its trees and height variations was intended to add a bit of a puzzle element to factory planning. Letting the player terraform (even if it is expensive) may result in a worse overall experience.
 
@@ -90,13 +90,13 @@ Here are all the significant changes since the last devlog:
 - Explodable rocks now drop 5 ore instead of 3
 - Rework hologram generation, again
 - Building previews now use holograms instead of glow shader
-- Building previews are no longer raised, only picking up existing buildings will raise them
-- Allow character to move when hovering UI, only gameplay mouse controls are disabled when hovering UI
+- Building previews are no longer raised; only picking up existing buildings will raise them
+- Allow character to move when hovering UI; only gameplay mouse controls are disabled when hovering UI
 - Refactor and share code for storing multiple items between locks and storage buildings (i.e. hoppers and chests)
-- Refactor and combine interaction sstems for deposit, storage deposit, and hologram fill
+- Refactor and combine interaction systems for deposit, storage deposit, and hologram fill
 - Added indicators when hovering belts, launchers, crucible, tapper, rotator, orbiter, and piston. These indicators show things like direction and item drop location.
 - When hovering a storage building or a lock, deposit prompt now shows quantity and capacity in label.
-- Show disabled control prompts for several interactions that are a building supports but are not currently possible (e.g. heating a crucible when there is no ore insde).
+- Show disabled control prompts for several interactions that a building supports but are not currently possible (e.g. heating a crucible when there is no ore inside).
 - Added building previews to world grid
 - Added debug view for grid state
 
