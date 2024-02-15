@@ -12,7 +12,9 @@ Hey folks! It's been a long time coming but I've finally added grass and bushes 
 
 Automation Station is a game about automation, so it hopefully isn't surprising to hear that my priority has been on the game's systems. I always planned to add more vegetation and life to the world, but I kept telling myself that I can add it later once the "core" of the game is done. But it had been literally years since I added the blubber tree, the only resemblance of life in the entire game. At this point, I think I could safely justify spending a couple of hours on some new plants. So that's what I did!
 
-<gif of grass and bushes>
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/O31fGQW.mp4" type="video/mp4" />
+</video>
 
 As you can, the island is now full of little bushes and patches of grass, making it a lot more lively. It also means that I can reduce the number of blubber trees without it feeling too barren. This is great because the trees cause several issues with obscuring the player or buildings, so reducing the quantiy helps a lot.
 
@@ -24,7 +26,9 @@ I've been fighting the urge to dive into more sophisticated grass shaders for a 
 
 Yup, arms are back. **Arms** are a building that picks up items from an adjacent building and places items in a different adjacent building. If you're familar with Factorio, it's essentially an inserter.
 
-<gif of arms>
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/ptalYoo.mp4" type="video/mp4" />
+</video>
 
 If you've been following the development of Automation Station for a while, you'll probably know that I don't like arms. My main issue is that they feel too similar to a conveyor belt. Both transfer items from one place to another, so why do we need two buildings? This is the question I've been struggling with for years... and I mean years.
 
@@ -37,6 +41,28 @@ After deciding against arms early on, my solution had been to add a hinge to the
 With the re-introduction of the arm, I can get the exact behavior I want for the crucible and other buildings that need to be unloaded. An arm is the only building that can pick up items. Belts can only recieve items from other belts or have items dropped on to them. There are still a few issues with arms and details to work out (especially concerning height and drops), but I think arms are the best solution going forward. 
 
 I have a lot more I can say on the topic, but I'll save that for a future rambling on discord. But I'd love to get all of your thoughts on this change, so let me know in the comments below or in our discord.
+
+## Tooltips & Control Prompts
+
+Another issue that came up in playtesting is that players didn't know what they were interacting with. In some cases, the control prompts would give some hints (e.g. "Left click to extract stone"), but there were several cases where it was impossible to know what an object was or how to interact with it.
+
+I spent the last couple of weeks overhauling the UI to add a lot of missing information.
+
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/j8qNB7h.mp4" type="video/mp4" />
+</video>
+
+Specifically, hovering an object now shows its name at the top of the screen. If an object is interactable, I show all of the control prompts, even if some of those interactions are currently not possible. Some objects can have lots of prompts, so I decided to move them to the bottom of the screen so that they aren't in the way. Finally, when hovering an item in the toolbar, it now adds a little tooltip giving the name of the item.
+
+When I first started adding these new UI elements, I added a lot more information, such as item descriptions and building statuses. While this was useful in some cases, it really cluttered the UI. And for things like building statuses, you could usually figure it out based on the building's appearance and its behavior. I decided to remove all but the most essential pieces of information to keep the UI a bit cleaner. If the player still wants more detailed information, I think it would be best to show that in some kind of codex. 
+
+However, there were still a few pieces of building information that were necessary in the UI. When hovering a canister or anything with storage, it is important to know how many items are inside. The radial indicator helps a bit, it sometimes you want the exact number. And when hovering a pylon lock, it is important to know exactly how many items it needs so that you can prepare accordingly. Thus, when hovering those objects, a bit of extra information appears at the top of the screen. 
+
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/TOoIy5A.mp4" type="video/mp4" />
+</video>
+
+UI is definitely one of my weakest areas of game development, but I'm really happy with how this is coming together. I have a whole list of other little tweaks and style changes I want to make, but the priority is on making the UI usable and presenting all of the required information. I'll continue to iterate on the UI aesthetics later on in development. 
 
 ## Interactions & Controls
 
@@ -55,31 +81,19 @@ The basic idea is to switch to a system where most interactions are on the prima
 
 Here is a look at smelting while holding an item. I still plan to move this held item to the top of the backpack, but hopefully you can see how much easier it is to manually smelt some ore.
 
-<gif of manual smelting>
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/2GVSyLQ.mp4" type="video/mp4" />
+</video>
 
 I plan to continue playtesting and iterating on these changes, but it already feels a lot better to play.
-
-## Tooltips & Control Prompts
-
-Another issue that came up in playtesting is that players didn't know what they were interacting with. In some cases, the control prompts would give some hints (e.g. "Left click to extract stone"), but there were several cases where it was impossible to know what an object was or how to interact with it.
-
-I spent the last couple of weeks overhauling the UI to add a lot of missing information.
-
-<gif of UI changes>
-
-Specifically, hovering an object now shows its name at the top of the screen. If an object is interactable, I show all of the control prompts, even if some of those interactions are currently not possible. Some objects can have lots of prompts, so I decided to move them to the bottom of the screen so that they aren't in the way. Finally, when hovering an item in the toolbar, it now adds a little tooltip giving the name of the item.
-
-When I first started adding these new UI elements, I added a lot more information, such as item descriptions and building statuses. While this was useful in some cases, it really cluttered the UI. And for things like building statuses, you could usually figure it out based on the building's appearance and its behavior. I decided to remove all but the most essential pieces of information to keep the UI a bit cleaner. If the player still wants more detailed information, I think it would be best to show that in some kind of codex. 
-
-However, there were still a few pieces of building information that were necessary in the UI. When hovering a canister or anything with storage, it is important to know how many items are inside. The radial indicator helps a bit, it sometimes you want the exact number. And when hovering a pylon lock, it is important to know exactly how many items it needs so that you can prepare accordingly. Thus, when hovering those objects, a bit of extra information appears at the top of the screen. 
-
-<gif of storage and lock panels>
-
-UI is definitely one of my weakest areas of game development, but I'm really happy with how this is coming together. I have a whole list of other little tweaks and style changes I want to make, but the priority is on making the UI usable and presenting all of the required information. I'll continue to iterate on the UI aesthetics later on in development. 
 
 ## Better Indicators
 
 In the last devlog, I showed off some of the indicators I added to buildings to help explain their behavior. With the reintroduction of the arm, I revamed all of the indicators for item transfer. Now the belts, ramps, arms, and launchers all use a consistent style and timings to work well with each other.
+
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/erPntCR.mp4" type="video/mp4" />
+</video>
 
 ## Wrap up
 
