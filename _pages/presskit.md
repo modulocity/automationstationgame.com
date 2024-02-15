@@ -80,7 +80,7 @@ The game has evolved quite a bit in terms of gameplay and graphics, but it has a
 
 
 ## Logo
-![Logo](/assets/images/logo_clean.png)
+![Logo](/assets/images/assets/logo.png)
 
 ## Monetization Permission
 I, Scott Daley, allow and encourage players to create, share, and monetize their gameplay videos from Automation Station on social platforms including, but not limited to, YouTube, Twitch, Twitter, Instagram, and Reddit.
