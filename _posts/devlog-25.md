@@ -1,12 +1,29 @@
 ---
-title: "Devlog #25: Controls"
+title: "Devlog #25: Tools & Item Throwing"
 header: 
   image: /assets/images/devlogs/devlog_24/event_header.png
 tags:
   - Devlog
 ---
 
-Greetings folks!
+Greetings folks! A lot of progress has been made on the game over the last few weeks. From the new tool system, to item throwing, to build mode improvements, there is a lot to unpack. But the majority of my time was spent iterating on some different control schemes in a quest to make the game more intuitive to play. Let's dive in!
+
+## Tools
+In Automation Station, player's need to use B0XB0T's laser to harvest resources and heat up the crucible for smelting, but thus far, they haven't need to explicitly equip the laser in order to do us. That has worked pretty well so far since the only tool in the game so far is the laser. However, I plan to add a scanner and a variety of other tools that the player will unlock throughout the game. While it might be possible to dynamically switch to the correct tool when iteracting with an object, that assumes that only one tool *can* be used on a given target, which may not always be the case. There is also a danger of making the game too smart such that the action performed is not what the player expected or intended. Alternatively, I have lots of different controls for different tools, but that is asking the player to do a lot of memorization.
+
+The much more flexible and common solution is to have a way to equip different tools. For example, in order to mine something, you would first need to equip the laser. Each equipped tool changes how the player will interact with the different objects in the world. 
+
+## Item Throwing
+- arc gizmos
+
+## Control Schemes
+- Tool mode
+- Aim mode
+
+
+## Build Mode
+- Prompts & warning messages
+- Cancel
 
 
 ## Changelog:
