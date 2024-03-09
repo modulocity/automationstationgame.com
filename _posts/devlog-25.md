@@ -9,9 +9,17 @@ tags:
 Greetings folks! A lot of progress has been made on the game over the last few weeks. From the new tool system, to item throwing, to build mode improvements, there is a lot to unpack. But the majority of my time was spent iterating on some different control schemes in a quest to make the game more intuitive to play. Let's dive in!
 
 ## Tools
-In Automation Station, player's need to use B0XB0T's laser to harvest resources and heat up the crucible for smelting, but thus far, they haven't need to explicitly equip the laser in order to do us. That has worked pretty well so far since the only tool in the game so far is the laser. However, I plan to add a scanner and a variety of other tools that the player will unlock throughout the game. While it might be possible to dynamically switch to the correct tool when iteracting with an object, that assumes that only one tool *can* be used on a given target, which may not always be the case. There is also a danger of making the game too smart such that the action performed is not what the player expected or intended. Alternatively, I have lots of different controls for different tools, but that is asking the player to do a lot of memorization.
+In Automation Station, players need to use B0XB0T's laser to harvest resources and heat up the crucible for smelting, but thus far, they haven't need to explicitly equip the laser in order to do this. That has worked pretty well since the laser is the only tool in the game so far. However, I plan to add a scanner and a variety of other tools that the player will unlock throughout the game. While it might be possible to dynamically switch to the correct tool when iteracting with an object, that assumes that only one tool *can* be used on a given target, which may not always be the case. There is also a danger of making the game too smart such that the action performed is not what the player expected or intended. Alternatively, each tool has a different keybinding, but that is asking the player to do a lot of memorization.
 
-The much more flexible and common solution is to have a way to equip different tools. For example, in order to mine something, you would first need to equip the laser. Each equipped tool changes how the player will interact with the different objects in the world. 
+The much more flexible and common solution is to have a way to equip different tools. Each equipped tool changes how the player will interact with the different objects in the world. Here is a look at the new tool system in Automation Station:
+
+<gif of tool system>
+
+By equipping the laser, the player is able to harvest ore and heat up the crucible. And if the player unequips the laser or switches to an item, they get a different set of actions. 
+
+The toolbar at the bottom of the screen now has a special section for tools alongside the items. One of things I find annoying about toolbars in other games is how difficult it is to switch between your tools an items. That's why I decided to add a item/tool toggle. Pressing the keybind for this will switch between the last used item and the last used tool. This makes it much easier to manually smelt ingots in the early game since you need to switch between depositing ore and then heating it up. 
+
+The toolbar is still a work in progress, but the goal is to help communicate which tool or item is equipped and make it easy to change what is equipped. 
 
 ## Item Throwing
 - arc gizmos
