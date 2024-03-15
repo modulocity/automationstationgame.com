@@ -15,18 +15,24 @@ While it might be possible to dynamically switch to the correct tool when iterac
 
 The much more flexible and common solution is to have a way to equip different tools. Each equipped tool changes how the player will interact with the different objects in the world. Here is a look at the new tool system in Automation Station:
 
-<gif of tool system>
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/vEWZAI6.mp4" type="video/mp4" />
+</video>
 
 The toolbar at the bottom of the screen now has a special section for tools alongside the items. Each item and tool can be equipped. By equipping the laser, the player is able to harvest ore and heat up the crucible. And if the player unequips the laser or switches to an item, they get a different set of actions. 
 
 ## Item Interactions
 Now that the player can separately equip items and tools, I had to revist how the interactions worked when an item was equipped. The primary action while holding an item is to deposit it, so I decided to show this arcing trajectory indicator to help communicate where the item will be added. Using the item while hoering a building will attempt to place the item in the building's slot. If the item can't be added, it will show as red to help communicate that depositing is invalid. 
 
-<gif of item arc and depositing>
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/YgQmOsf.mp4" type="video/mp4" />
+</video>
 
 After adding these trajectory indicators, I realized that it felt like you ought to be able to throw items anywhere. While this isn't super helpful at the moment, I decided to re-add the throwing mechanic so that you can toss items loose on the ground. I'm hoping to add additional gameplay elements that leverage this throw mechanic in fun and playful ways.
 
-<gif of item throwing>
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/NTTBegp.mp4" type="video/mp4" />
+</video>
 
 ## Control Schemes
 In the last devlog, I mentioned how I had reworked the controls to streamline certain interactions. While I think these changes were an improvement, there were still some issues that players were running into. Specifically, having the same button for depositing items and using the laser meant that players were never quite sure what was going to happen when they clicked that button. In reality, there was only ever one option. For example, if a crucible is empty, left click will attempt to deposit an item. If the crucible has ore, left click will start heating the crucible. But even though the game had no ambiguity in these scenarios, it still felt somewhat ambiguous to players and led to pressing the wrong buttons or being frustrated by things not behaving as they expected.
@@ -35,7 +41,9 @@ By introducing the tool system and requiring players to explicitly equip differe
 
 The main downside of the new item and tool system is that the player now has to manually switch what they have equipped, which can be cumbersome. For example, if you're building a house in Minecraft, you often want to switch between your wood planks for building and your wood axe whenever you mistakenly place a block in the wrong spot. You can try to optimize your toolbar arrangement to make switching fast, but it still adds friction to the gameplay. That's why I decided to add a item/tool toggle. Pressing the keybind for this will switch between the last used item and the last used tool. This makes it much easier to manually smelt ingots in the early game since you need to switch between depositing ore and then heating it up. 
 
-<gif of tool toggle>
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/LtbySda.mp4" type="video/mp4" />
+</video>
 
 With all of these changes, there were still several open questions related to the controls for interactions. How does the player perform interactions that don't require an item or tool, such as picking up items or pressing buttons? Can the player unequip or holster an item and tool? What does it mean to have an "equipped" item or tool in terms of the controls? When should I show the throw trajectory and laser targetting indicators?
 
