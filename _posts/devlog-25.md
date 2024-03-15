@@ -1,7 +1,7 @@
 ---
 title: "Devlog #25: Tools & Controls"
 header: 
-  image: /assets/images/devlogs/devlog_24/event_header.png
+  image: /assets/images/devlogs/devlog_25/event_header.png
 tags:
   - Devlog
 ---
