@@ -9,6 +9,7 @@ tags:
 Greetings folks! A lot of progress has been made on the game over the last few weeks. From the new tool system to item throwing, and reworked controls, there is a lot to unpack. Let's dive in!
 
 ## Tools
+
 In Automation Station, players need to use B0XB0T's laser to harvest resources and heat up the crucible for smelting, but thus far, they haven't needed to explicitly equip the laser to do this. Since the laser is currently the only tool in the game, that has worked pretty well. However, I plan to add a scanner and a variety of other tools that the player will unlock throughout the game.
 
 While it might be possible to dynamically switch to the correct tool when interacting with an object, that assumes that only one tool *can* be used on a given target, which may not always be the case. There is also a danger of making the game too smart such that the action performed is not what the player expected or intended. Alternatively, each tool has its own keybinding, but that is asking the player to do a lot of memorization.
@@ -22,7 +23,8 @@ The much more flexible and common solution is to have a way to equip different t
 The toolbar at the bottom of the screen now has a special section for tools alongside the items. Each item and tool can be equipped. By equipping the laser, the player is able to harvest ore and heat up the crucible. And if the player unequips the laser or switches to an item, they get a different set of actions. 
 
 ## Item Interactions
-Now that the player can separately equip items and tools, I had to revisit how the interactions worked when an item was equipped. The primary action while holding an item is to deposit it, so I decided to show this arcing trajectory indicator to help communicate where the item will be added. Using the item while hovering over a building will attempt to place the item in the building's slot. If the item can't be added, it will show as red to help communicate that depositing is invalid. 
+
+Now that the player can separately equip items and tools, I had to revisit how the interactions worked when an item was equipped. The primary action while holding an item is to deposit it, so I decided to show an arcing trajectory indicator to help communicate where the item will be added. Using the item while hovering over a building will attempt to place the item in the building's slot. If the item can't be added, it will show as red to help communicate that depositing is invalid. 
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/YgQmOsf.mp4" type="video/mp4" />
@@ -35,6 +37,7 @@ After adding these trajectory indicators, I realized that it felt like you ought
 </video>
 
 ## Control Schemes
+
 In the last devlog, I mentioned how I had reworked the controls to streamline certain interactions. While I think these changes were an improvement, there were still some issues that players were running into. Specifically, having the same button for depositing items and using the laser meant that players were never quite sure what was going to happen when they clicked that button. In reality, there was only ever one option. For example, if a crucible is empty, left click will attempt to deposit an item. If the crucible has ore, left click will start heating the crucible. But even though the game had no ambiguity in these scenarios, it still felt somewhat ambiguous to players and led to pressing the wrong buttons or being frustrated by things not behaving as they expected.
 
 By introducing the tool system and requiring players to explicitly equip different items or tools, the goal is to remove this ambiguity. For example, if the player has the laser equipped, we know that they are trying to laser, even if the target can't currently be heated. And if the player has an item equipped, we should assume they are trying to deposit it. If the target can't receive an item, we can just show an error message.
@@ -69,6 +72,7 @@ Cheers!
 -Scott
 
 ## Changelog:
+
 ```
 - Improvements to hover logic
 - Sort total building cost and individual building costs for consistency
