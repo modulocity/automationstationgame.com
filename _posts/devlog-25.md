@@ -6,12 +6,12 @@ tags:
   - Devlog
 ---
 
-Greetings folks! A lot of progress has been made on the game over the last few weeks. From the new tool system, to item throwing, to reworked controls, there is a lot to unpack. Let's dive in!
+Greetings folks! A lot of progress has been made on the game over the last few weeks. From the new tool system to item throwing, and reworked controls, there is a lot to unpack. Let's dive in!
 
 ## Tools
-In Automation Station, players need to use B0XB0T's laser to harvest resources and heat up the crucible for smelting, but thus far, they haven't needed to explicitly equip the laser in order to do this. Since the laser is currently the only tool in the game, that has worked pretty well. However, I plan to add a scanner and a variety of other tools that the player will unlock throughout the game.
+In Automation Station, players need to use B0XB0T's laser to harvest resources and heat up the crucible for smelting, but thus far, they haven't needed to explicitly equip the laser to do this. Since the laser is currently the only tool in the game, that has worked pretty well. However, I plan to add a scanner and a variety of other tools that the player will unlock throughout the game.
 
-While it might be possible to dynamically switch to the correct tool when iteracting with an object, that assumes that only one tool *can* be used on a given target, which may not always be the case. There is also a danger of making the game too smart such that the action performed is not what the player expected or intended. Alternatively, each tool has its own keybinding, but that is asking the player to do a lot of memorization.
+While it might be possible to dynamically switch to the correct tool when interacting with an object, that assumes that only one tool *can* be used on a given target, which may not always be the case. There is also a danger of making the game too smart such that the action performed is not what the player expected or intended. Alternatively, each tool has its own keybinding, but that is asking the player to do a lot of memorization.
 
 The much more flexible and common solution is to have a way to equip different tools. Each equipped tool changes how the player will interact with the different objects in the world. Here is a look at the new tool system in Automation Station:
 
@@ -22,7 +22,7 @@ The much more flexible and common solution is to have a way to equip different t
 The toolbar at the bottom of the screen now has a special section for tools alongside the items. Each item and tool can be equipped. By equipping the laser, the player is able to harvest ore and heat up the crucible. And if the player unequips the laser or switches to an item, they get a different set of actions. 
 
 ## Item Interactions
-Now that the player can separately equip items and tools, I had to revist how the interactions worked when an item was equipped. The primary action while holding an item is to deposit it, so I decided to show this arcing trajectory indicator to help communicate where the item will be added. Using the item while hoering a building will attempt to place the item in the building's slot. If the item can't be added, it will show as red to help communicate that depositing is invalid. 
+Now that the player can separately equip items and tools, I had to revisit how the interactions worked when an item was equipped. The primary action while holding an item is to deposit it, so I decided to show this arcing trajectory indicator to help communicate where the item will be added. Using the item while hovering over a building will attempt to place the item in the building's slot. If the item can't be added, it will show as red to help communicate that depositing is invalid. 
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/YgQmOsf.mp4" type="video/mp4" />
@@ -37,23 +37,23 @@ After adding these trajectory indicators, I realized that it felt like you ought
 ## Control Schemes
 In the last devlog, I mentioned how I had reworked the controls to streamline certain interactions. While I think these changes were an improvement, there were still some issues that players were running into. Specifically, having the same button for depositing items and using the laser meant that players were never quite sure what was going to happen when they clicked that button. In reality, there was only ever one option. For example, if a crucible is empty, left click will attempt to deposit an item. If the crucible has ore, left click will start heating the crucible. But even though the game had no ambiguity in these scenarios, it still felt somewhat ambiguous to players and led to pressing the wrong buttons or being frustrated by things not behaving as they expected.
 
-By introducing the tool system and requiring players to explicitly equip different items or tools, the goal is remove this ambiguity. For example, if the player has the laser equipped, we know that they are trying to laser, even if the target can't currently be heated. And if the player has an item equiped, we should assume they are trying to deposit it. If the target can't receive an item, we can just show an error message.
+By introducing the tool system and requiring players to explicitly equip different items or tools, the goal is to remove this ambiguity. For example, if the player has the laser equipped, we know that they are trying to laser, even if the target can't currently be heated. And if the player has an item equipped, we should assume they are trying to deposit it. If the target can't receive an item, we can just show an error message.
 
-The main downside of the new item and tool system is that the player now has to manually switch what they have equipped, which can be cumbersome. For example, if you're building a house in Minecraft, you often want to switch between your wood planks for building and your wood axe whenever you mistakenly place a block in the wrong spot. You can try to optimize your toolbar arrangement to make switching fast, but it still adds friction to the gameplay. That's why I decided to add a item/tool toggle. Pressing the keybind for this will switch between the last used item and the last used tool. This makes it much easier to manually smelt ingots in the early game since you need to switch between depositing ore and then heating it up. 
+The main downside of the new item and tool system is that the player now has to manually switch what they have equipped, which can be cumbersome. For example, if you're building a house in Minecraft, you often want to switch between your wood planks for building and your wood axe whenever you mistakenly place a block in the wrong spot. You can try to optimize your toolbar arrangement to make switching fast, but it still adds friction to the gameplay. That's why I decided to add an item/tool toggle. Pressing the keybind for this will switch between the last used item and the last used tool. This makes it much easier to manually smelt ingots in the early game since you need to switch between depositing ore and then heating it up. 
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/LtbySda.mp4" type="video/mp4" />
 </video>
 
-With all of these changes, there were still several open questions related to the controls for interactions. How does the player perform interactions that don't require an item or tool, such as picking up items or pressing buttons? Can the player unequip or holster an item and tool? What does it mean to have an "equipped" item or tool in terms of the controls? When should I show the throw trajectory and laser targetting indicators?
+With all of these changes, there were still several open questions related to the controls for interactions. How does the player perform interactions that don't require an item or tool, such as picking up items or pressing buttons? Can the player unequip or holster an item and tool? What does it mean to have an "equipped" item or tool in terms of the controls? When should I show the throw trajectory and laser targeting indicators?
 
-I spent a huge chunk of time trying to answer these questions by prototyping different control schemes. For example, I tried out a system where the player had to hold right click to "aim" the current item or tool by holding right click. While aiming, left click would throw the item or use the tool. While not aiming, left click would pick up items and press buttons. This worked pretty well, but it felt a little awkward to hold right click and press left click. So then I tried an aim toggle on right click. This worked a better, but it was easy to get lost in all the different modes (tool toggle, aim mode, build mode, etc.). I even tried have a separate button for tools and items.
+I spent a huge chunk of time trying to answer these questions by prototyping different control schemes. For example, I tried out a system where the player had to hold right click to "aim" the current item or tool by holding right click. While aiming, left click would throw the item or use the tool. While not aiming, left click would pick up items and press buttons. This worked pretty well, but it felt a little awkward to hold right click and press left click. So then I tried an aim toggle on right click. This worked a bit better, but it was easy to get lost in all the different modes (tool toggle, aim mode, build mode, etc.). I even tried having a separate button for tools and items.
 
 Ultimately, I settled on a system that works as follows:
-- Items and tools can be equipped by either clicking on the toolbar, pressing a number hotkey, or scrolling the mouse wheel
+- Items and tools can be equipped by either clicking on the toolbar, pressing a number hotkey, or scrolling the mouse wheel.
 - The equipped item/tool can be unequipped by pressing right click or Q.
 - Pressing right click or Q with nothing equipped will restore the last equipped item or tool.
-- While an item or tool is equipped, show the corresponding indicators
+- While an item or tool is equipped, show the corresponding indicators.
 - While an item or tool is equipped, left click will use that tool.
 - With nothing equipped, left click will perform a "default" interaction. That includes picking up items and pressing buttons.
 - Pressing E will toggle between the last used item or last used tool.
@@ -62,7 +62,7 @@ So far, playtesters seem to like this option best. However, I think this will be
 
 ## Wrap up
 
-Beyond of all the stuff above, I also spent a lot of time on some build mode improvements, but I'll save those for a future devlog. I also decided to port a bunch of custom shader and rendering stuff to Unity's new API, which ended up taking almost a full week. Anyways, that's all for this devlog. Huge thanks to those of you that take the time read through these. As usual, let me know if you have any thoughts or suggestions in the comments below or in our Discord server. 
+Beyond all of the stuff above, I also spent a lot of time on some build mode improvements, but I'll save those for a future devlog. I also decided to port a bunch of custom shader and rendering stuff to Unity's new API, which ended up taking almost a full week. Anyways, that's all for this devlog. Huge thanks to those of you who take the time to read through these. As usual, let me know if you have any thoughts or suggestions in the comments below or in our Discord server. 
 
 Cheers!
 
