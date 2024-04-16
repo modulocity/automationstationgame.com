@@ -18,19 +18,39 @@ As great as this all sounded, when I finally got everything implemented and had 
 
 Initially, I thought the game just needed a proper tutorial to guide the player through the early part of the game. I figured that once they understood the decryption mechanic, everything would click into place. But tutorials are notoriously difficult to get right. And even with an amazing tutorial, the decryption mechanic was completely opaque. Players never knew what they are working towards and had no way to strategize. A huge part of automation games is trying to figure out how to gradually automate more and more of your factory. Is it better to automate resource collection or smelting? The answer to that question greatly depends on the player and what they value. But if the game provides no information on the dfferent progression paths available, players will feel like they are stumbling aimlessly in the dark and lose motivation.
 
-## Design
+Another source of frustration was how so many different systems required resources. In the early game, everything has to be smelted and crafted by hand, so most players only made what they needed. For example, one of the first island-unlocking pylons requires 10 iron ingots to unlock, so players would get to work smelting 10 ingots. Then after unlocking the island, they would find a cache requiring 5 iron ingots to unlock, so they had to go back and smelt 5 more ingots. After unlocking the cache and decrypting the cartridge, they would unlock the Burner, which requires even more iron ingots to construct. The problem here was that too many different systems were asking for resources, and none of the future costs were known. Player's would craft what they needed, having no idea that they'll need more in a few minutes. 
 
-After identifying some of the issues with the old progression system, I got to work on designing a replacement. Rather than trying to reinvent the wheel, I looked at how other base building games handle progression. Most of them have some kind of technology tree where you can see some or all of the available technologies in the game. This allows players to identify unlocks that would be most beneficial to them. It also provides a clear set of objectives for the player to work towards.
+To summarize, the main issues were as follows:
+1. Caches, Locks, and Decrypters were unintuitive and required a lot of hand holding.
+2. The cartridge decryption mechanic was completely opaque, preventing players from planning and strategizing.
+3. Too many surprise resource sinks, requiring you to repeat manual steps too often. 
 
-The main difference between games is how the technologies are unlocked. In Satisfactory, you need to craft and collect a spefific set of resources and trade them in for an unlock. In Factorio, you instead need to craft "science packs" which, when deposited into a science lab, will work incrementally towards the current active research. 
+## What are other games doing?
 
-These two systems both act as the primary resource sink in the game. The main purpose of your factory is to produce the items or science packs required for the next set of unlocks. 
+After identifying these issues with the old progression system, it was clear that it needed a complete rework. Rather than trying to reinvent the wheel, I first looked at how other base building games handle progression. Most of them have some kind of technology tree where you can see some or all of the available technologies in the game. This allows players to identify unlocks that would be most beneficial to them. It also provides a clear set of objectives for the player to work towards so that they are never left confused about what to do next.
 
-However, not all games work this way. In Astroneer, you're able to find mysterious and alien "research items" that can be placed in a research chamber to produce a currency called "bytes". The bytes can be spent to unlock a variety of technologies. While you need some resources to build a research setup, the primary resource sink for your factory is the vehicles and other gadgets that aide in exploration and surviving on the alien planet. While Astroneer is more of a survival-lite crafting and exploration game, I think it is possible to separate the resource sink from the progression system in a pure
+The main difference between these games is how the technologies are unlocked. For example, in Satisfactory, you need to craft and collect a spefific set of resources and trade them in for an unlock. In Factorio, you instead need to craft "science packs" which, when deposited into a science lab, will work incrementally towards the current active research over time. 
+
+These two progression systems both act as the primary resource sink in the game, consuming the bulk of your factory's output in exchange for progression. In other words, the main purpose of your factory is to produce the items or science packs required for the next set of unlocks. However, when we look beyond the automation genre, we find games that handle this differently. The unlocks in Forager are tied to the player's level which grows from just about everything. But this is mostly orthogonal to the crafting and factory buildings you build to help create new weapons, armor, and items. In Subnautica, the progression is tied to discovering wrecks that can be scanned to unlock a new technology. 
+
+In Astroneer, you're able to find "research items" that can be placed in a research chamber to produce a currency called "bytes". The bytes can be spent to unlock a variety of technologies. While you need some resources to build a research setup, the primary resource sink for your factory is the vehicles and other gadgets that aide in exploration and surviving on the alien planet. But Astroneer also has another progression system called the "Mission Log". This is a screen that shows a bunch of missions the player is able to complete in exchange for rewards. Sometimes these rewards are items or the aforementioned "bytes", but other times you unlock a new building schematic. What's notable about the Mission Log is that it doesn't consume any resources or items. Instead, the player needs to complete various steps such as "fully charge a battery" or "smelt 10 iron". This allows the missions to serve as a tutorial system, gradually guiding the player through the game's systems. 
+
+## Designing
+
+While a lot of games have a tech tree, they do so for a good reason. It solves almost of the problems I faced with the old progression, and players are used to interacting with them. So that's what I decided to do for the new progression system. However, unlike most automation games, the tech tree wouldn't be a resource sink. Instead, the tree will be filled with missions, each containing a set of steps that must be completed in order to unlock a new building. 
+
+Here is a look at the first mockup I made for the new tech tree:
+
+![Tech Tree Mockup](/assets/images/devlogs/devlog_26/tech_tree_mock.png)
 
 
+I decided to go with a traditional node-based tech tree where each node corresponds to a mission. Clicking on a node will show information about the selected mission. A mission may be locked behind other missions, which is visualized as an arrow between the locked mission and its dependency. 
+
+It's pretty straightforward, which is exactly the goal. Automation Station already has a lot of weird and obtuse mechanics and with the progression system guiding the player through the rest of the game, it needs to be super intuitive to use.
 
 ## Implemention
+
+
 
 ## Put a pin it
 
