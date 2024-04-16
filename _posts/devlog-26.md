@@ -52,7 +52,9 @@ It's pretty straightforward, which is the primary goal here. Automation Station 
 
 Implementing the mission browser in-game was no small feat. As I mentioned earlier, UI always takes me a long time and there were a bunch of new technical hurdles to overcome to get everything working. The first one was the node-based tech tree UI panel. I knew that this tech tree would get pretty large over time, so it needed to support a larger tree than could fit on screen. The typical solution to this is to use a "Scroll View" which adds scroll bars to navigate the content within a viewport. This works great, but for some furstrating and mysterious reason, Unity's off-the-shelf scroll view doesn't support panning with a mouse drag. That meant that the only way to move around the tech tree would be to click precisely on the scroll bars and drag those around instead. This wasn't acceptable to me, so I spent a couple of days writing a custom scroll view that supported panning on mouse drag.
 
-<gif of drag scroll view>
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/8C795pc.mp4" type="video/mp4" />
+</video>
 
 The next hurdle was figuring out how track the progress of missions. Mission steps can be a variety of things, such as "Smelt 5 iron ingots" or "Construct a crucible" or "Enter build mode", so I needed a system that was flexible enough to handle all these kinds of gameplay events that I could forsee being a step in a mission. In a object-oriented design pattern, I would typically make some kind of base event class where each unique type of event would extend this to add additional data and features. However, this doesn't scale super well when you have potentially thousands of events firing every frame. It is important to keep the data footprint as small as possible to support large quantities. At the same time, I wanted the events to all be the same size so that they could all be thrown into a nice cache-friendly array.
 
@@ -60,7 +62,9 @@ The solution I came up with was to make an event store two pieces of information
 
 With that, I was able to wire up the UI for the mission browser and have it dynamically update based on what the player does in-game. Here is how it looks:
 
-<gif of mission browser>
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/qsd4eBw.mp4" type="video/mp4" />
+</video>
 
 ## Put a pin it
 
@@ -68,7 +72,9 @@ While the mission browser is super helpful for tracking your progress on a missi
 
 To mitigate this, I made it so missions can be pinned. Doing so will add a little UI panel in-game that shows the steps of the current pinned mission. Just like the mission browser, it updates in realtime as you complete various actions.
 
-<gif of mission pinning>
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/IdOyADp.mp4" type="video/mp4" />
+</video>
 
 ## Fabricator
 
@@ -76,7 +82,9 @@ Automation Station doesn't have any form of manual crafting. Smelting has to be 
 
 This problem was made even worse with the new mission system, since the mission for unlocking the early-game buildings typically had steps to collect the items needed to construct the building. To address this issue, I decided to create a new early-game crafting building called the **Fabricator**. The model is a placeholder, but here is how it currently looks in-game:
 
-<gif of Fab>
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/dGfqZMn.mp4" type="video/mp4" />
+</video>
 
 Unlike the Assembler, the Fabricator doesn't have an integrated conveyor belt. Items have to be added manually or using an Arm. The Fabricator can only craft single items into other single items, while the Assembler will be exclusively for crafting a stack of items into other items. Recipes for iron gears, copper wire, and rubber have been moved from the Assembler to the Fabricator, meaning that those items can now be used to construct the early game recipes.
 
