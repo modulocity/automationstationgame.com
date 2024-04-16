@@ -39,24 +39,54 @@ In Astroneer, you're able to find "research items" that can be placed in a resea
 
 While a lot of games have a tech tree, they do so for a good reason. It solves almost of the problems I faced with the old progression, and players are used to interacting with them. So that's what I decided to do for the new progression system. However, unlike most automation games, the tech tree wouldn't be a resource sink. Instead, the tree will be filled with missions, each containing a set of steps that must be completed in order to unlock a new building. 
 
-Here is a look at the first mockup I made for the new tech tree:
+Here is a look at the first mockup I made for what I'm currently calling the "Mission Browser":
 
-![Tech Tree Mockup](/assets/images/devlogs/devlog_26/tech_tree_mock.png)
+![Mission Browser Mockup](/assets/images/devlogs/devlog_26/tech_tree_mock.png)
 
 
 I decided to go with a traditional node-based tech tree where each node corresponds to a mission. Clicking on a node will show information about the selected mission. A mission may be locked behind other missions, which is visualized as an arrow between the locked mission and its dependency. 
 
-It's pretty straightforward, which is exactly the goal. Automation Station already has a lot of weird and obtuse mechanics and with the progression system guiding the player through the rest of the game, it needs to be super intuitive to use.
+It's pretty straightforward, which is the primary goal here. Automation Station already has a lot of weird and obtuse mechanics and if the progression system is the main thing guiding the player through the rest of the game, it needs to be super intuitive to use.
 
 ## Implemention
 
+Implementing the mission browser in-game was no small feat. As I mentioned earlier, UI always takes me a long time and there were a bunch of new technical hurdles to overcome to get everything working. The first one was the node-based tech tree UI panel. I knew that this tech tree would get pretty large over time, so it needed to support a larger tree than could fit on screen. The typical solution to this is to use a "Scroll View" which adds scroll bars to navigate the content within a viewport. This works great, but for some furstrating and mysterious reason, Unity's off-the-shelf scroll view doesn't support panning with a mouse drag. That meant that the only way to move around the tech tree would be to click precisely on the scroll bars and drag those around instead. This wasn't acceptable to me, so I spent a couple of days writing a custom scroll view that supported panning on mouse drag.
 
+<gif of drag scroll view>
+
+The next hurdle was figuring out how track the progress of missions. Mission steps can be a variety of things, such as "Smelt 5 iron ingots" or "Construct a crucible" or "Enter build mode", so I needed a system that was flexible enough to handle all these kinds of gameplay events that I could forsee being a step in a mission. In a object-oriented design pattern, I would typically make some kind of base event class where each unique type of event would extend this to add additional data and features. However, this doesn't scale super well when you have potentially thousands of events firing every frame. It is important to keep the data footprint as small as possible to support large quantities. At the same time, I wanted the events to all be the same size so that they could all be thrown into a nice cache-friendly array.
+
+The solution I came up with was to make an event store two pieces of information: the event type and an optional entity type. For example, the event for smelting an iron ingot would have a type "smelt item" and an entity type of "iron-ingot". And for an event for entering build mode, the type would be "enter build mode" and the entity type would be null and unused. Internally, the event type and entity type are actually stored as integer IDs to keep the data footprint as small as possible. The events can be fired from any gameplay system and then another system listens for events and updates mission progress accordingly.
+
+With that, I was able to wire up the UI for the mission browser and have it dynamically update based on what the player does in-game. Here is how it looks:
+
+<gif of mission browser>
 
 ## Put a pin it
 
-## Fabriactor
+While the mission browser is super helpful for tracking your progress on a mission, it is a bit annoying to have to stop what you're doing and open the fullscreen UI panel. For example, if you're mining iron ore for a mission, you want to know when you have enough, but needing to open the mission browsers adds a bunch of unnecessary friction.
+
+To mitigate this, I made it so missions can be pinned. Doing so will add a little UI panel in-game that shows the steps of the current pinned mission. Just like the mission browser, it updates in realtime as you complete various actions.
+
+<gif of mission pinning>
+
+## Fabricator
+
+Automation Station doesn't have any form of manual crafting. Smelting has to be done in a Crucible and crafting has to be done in an Assembler. However, the Assembler isn't unlocked until later in the game, after you have conveyor belts unlocked (since it has a built-in conveyor belt). That means that all of the early-game building recipes can't be made from crafted items. The only items the player has access to early on are raw resources and smelted ingots. This meant that all of the early-game buildings needed to have very similar recipes, usually some combination of iron ingots and copper ingots.
+
+This problem was made even worse with the new mission system, since the mission for unlocking the early-game buildings typically had steps to collect the items needed to construct the building. To address this issue, I decided to create a new early-game crafting building called the **Fabricator**. The model is a placeholder, but here is how it currently looks in-game:
+
+<gif of Fab>
+
+Unlike the Assembler, the Fabricator doesn't have an integrated conveyor belt. Items have to be added manually or using an Arm. The Fabricator can only craft single items into other single items, while the Assembler will be exclusively for crafting a stack of items into other items. Recipes for iron gears, copper wire, and rubber have been moved from the Assembler to the Fabricator, meaning that those items can now be used to construct the early game recipes.
+
+I'm still working on the balance and progression of items and crafting recipes, but I think this new crafting machine will make it a lot easier to come up with a progression flow that feels good in the early game. Long term, I still think it would be cool to introduce more machines, such as a metal press, mixer, and wire extruder, but the Fabricator and Assembler can cover most of the planned recipes for the time being.
 
 ## Wrap up
+
+I'm really pleased with how the Mission Browser came together. I still need to have more people playtest it, but I think it is a huge improvement over the previous system. I think the UI still needs a bit of work, but I plan to revisit that (and all the other UI elements in the game) later on in development. For now, I'm planning on to other parts of the game.
+
+As always, I'd love to hear your thoughts and suggestions! Feel free to drop a comment or join or Discord using the link below.
 
 Cheers!
 
@@ -111,7 +141,3 @@ Cheers!
 - Fix bug where mission details icon was not using the correct icon
 - Add drag scroll views to mission details panel for when there is not enough room to show all steps and unlocks
 ```
-
-Cheers!
-
--Scott
