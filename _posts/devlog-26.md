@@ -12,6 +12,10 @@ Hello everyone! In this devlog, we're taking a deep dive into a brand new progre
 
 If you've been following the devlogs recently, you might remember the Caches and Decrypters that were introduced in [devlog #20](/blog/devlog-20). After unlocking a new island, the player could stumble across mysterious Caches. A Cache had to be unlocked by providing specific resources to the locks surrounding it. Once unlocked, the player would be able to retrieve a cartridge from the Cache, which they would take back to their base and deposit into a Decrypter. The Decrypter would get to work on decrypting the cartridge. Once complete, the player would be able to claim the newly unlocked technology, which typically was a new building that they could start using in their factory.
 
+<video width="100%" autoplay="autoplay" loop="true" muted>
+  <source src="https://i.imgur.com/cAtgdKo.mp4" type="video/mp4" />
+</video>
+
 At a high level, this idea had a lot of potential. By placing these caches on new islands, players were encouraged to expand and explore. You never knew what was inside a cache until you decrypted it, so there was also an element of anticipation when waiting for the decryption to finish and surprise when you finally got the unlock. Players also didn't need to fiddle with UI screens in order to make progress since everything took place inside the game world. This was especially great for me since UI design is something I struggle with and find incredibly time-consuming.
 
 As great as this all sounded, when I finally got everything implemented and had people playtest it, there were some glaring issues. Firstly, the player had no idea what to do when they started the game. Even if a player discovered a Cache, it wasn't clear how to open it or even that they should. And after opening a Cache, they wouldn't know what to do with the cartridges inside. After watching them struggle, I had to just tell them what to do so that they could make progress.
@@ -28,17 +32,27 @@ To summarize, the main issues were as follows:
 
 ## What Are Other Games Doing?
 
-After identifying these issues with the old progression system, it was clear that it needed a complete rework. Rather than trying to reinvent the wheel, I first looked at how other base-building games handle progression. Most of them have some kind of technology tree where you can see some or all of the available technologies in the game. This allows players to identify unlocks that would be most beneficial to them. It also provides a clear set of objectives for the player to work towards so that they are never left confused about what to do next.
+After identifying these issues with the old progression system, it was clear that it needed a complete rework. Rather than trying to reinvent the wheel, I first looked at how other automation and base-building games handle progression. Most of them have some kind of technology tree where you can see some or all of the available technologies in the game. This allows players to identify unlocks that would be most beneficial to them. It also provides a clear set of objectives for the player to work towards so that they are never left confused about what to do next.
+
+<figure class="align-center">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/devlogs/devlog_26/factorio_technologies.png" alt="Factorio Technology Screen">
+  <figcaption>Factorio's Technology Screen</figcaption>
+</figure> 
 
 The main difference between these games is how the technologies are unlocked. For example, in Satisfactory, you need to craft and collect a specific set of resources and trade them in for an unlock. In Factorio, you instead need to craft "science packs" which, when deposited into a science lab, will work incrementally towards the current active research over time.
 
-These two progression systems both act as the primary resource sink in the game, consuming the bulk of your factory's output in exchange for progression. In other words, the main purpose of your factory is to produce the items or science packs required for the next set of unlocks. However, when we look beyond the automation genre, we find games that handle this differently. The unlocks in Forager are tied to the player's level which grows from just about everything. But this is mostly orthogonal to the crafting and factory buildings you build to help create new weapons, armor, and items. In Subnautica, the progression is tied to discovering wrecks that can be scanned to unlock a new technology.
+These two progression systems both act as the primary resource sink in the game, consuming the bulk of your factory's output in exchange for progression. In other words, the main purpose of your factory is to produce the items or science packs required for the next set of unlocks. However, when we look beyond the automation genre, we find games that handle this differently. The unlocks in Forager are tied to the player's level which grows from just about everything. But this is mostly orthogonal to the crafting and factory buildings you build to help create new weapons, items, and money. In Subnautica, the progression is tied to discovering wrecks that can be scanned to unlock a new technology.
 
 In Astroneer, you're able to find "research items" that can be placed in a research chamber to produce a currency called "bytes". The bytes can be spent to unlock a variety of technologies. While you need some resources to build a research setup, the primary resource sink for your factory is the vehicles and other gadgets that aid in exploration and surviving on the alien planet. But Astroneer also has another progression system called the "Mission Log". This is a screen that shows a bunch of missions the player is able to complete in exchange for rewards. Sometimes these rewards are items or the aforementioned "bytes", but other times you unlock a new building schematic. What's notable about the Mission Log is that it doesn't consume any resources or items. Instead, the player needs to complete various steps such as "fully charge a battery" or "smelt 10 iron". This allows the missions to serve as a tutorial system, gradually guiding the player through the game's systems.
 
+<figure class="align-center">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/devlogs/devlog_26/astroneer_missions.png" alt="Astroneer Mission Log">
+  <figcaption>Astroneer's Mission Log</figcaption>
+</figure> 
+
 ## Designing a Mission Browser
 
-While a lot of games have a tech tree, they do so for a good reason. It solves almost all of the problems I faced with the old progression, and players are used to interacting with them. So that's what I decided to do for the new progression system. However, unlike most automation games, the tech tree wouldn't be a resource sink. Instead, the tree will be filled with missions, each containing a set of steps that must be completed in order to unlock a new building.
+A lot of games have a tech tree, and they do so for a good reason. It solves almost all of the problems I faced with the old progression, and players are used to interacting with them. So that's what I decided to do for the new progression system. However, unlike most automation games, the tech tree won't be a resource sink. Instead, the tree will be filled with missions, each containing a set of steps that must be completed in order to unlock a new building.
 
 Here is a look at the first mockup I made for what I'm currently calling the "Mission Browser":
 
@@ -50,7 +64,7 @@ It's pretty straightforward, which is the primary goal here. Automation Station 
 
 ## Implemention Challenges
 
-Implementing the mission browser in-game was no small feat. As I mentioned earlier, UI always takes me a long time and there were a bunch of new technical hurdles to overcome to get everything working. The first one was the node-based tech tree UI panel. I knew that this tech tree would get pretty large over time, so it needed to support a larger tree than could fit on screen. The typical solution to this is to use a "Scroll View" which adds scroll bars to navigate the content within a viewport. This works great, but for some frustrating and mysterious reason, Unity's off-the-shelf scroll view doesn't support panning with a mouse drag. That meant that the only way to move around the tech tree would be to click precisely on the scroll bars and drag those around instead. This wasn't acceptable to me, so I spent a couple of days writing a custom scroll view that supported panning on mouse drag.
+Implementing the mission browser in-game was no small feat. As I mentioned earlier, UI always takes me a long time and there were a bunch of new technical hurdles to overcome to get everything working. The first one was the node-based tech tree UI panel. I knew that this tech tree would get pretty large over time, so it needed to support a larger tree than could fit on screen. The typical solution to this is to use a "Scroll View" which adds scroll bars to navigate the content within a viewport. This works great, but for some frustrating and mysterious reason, Unity's off-the-shelf scroll view doesn't support panning with a mouse drag. That meant that the only way to move around the tech tree was to click precisely on the scroll bars and drag those around instead. This wasn't acceptable to me, so I spent a couple of days writing a custom scroll view that supported panning on mouse drag.
 
 <video width="100%" autoplay="autoplay" loop="true" muted>
   <source src="https://i.imgur.com/8C795pc.mp4" type="video/mp4" />
@@ -86,15 +100,15 @@ This problem was made even worse with the new mission system, since the mission 
   <source src="https://i.imgur.com/dGfqZMn.mp4" type="video/mp4" />
 </video>
 
-Unlike the Assembler, the Fabricator doesn't have an integrated conveyor belt. Items have to be added manually or using an Arm. The Fabricator can only craft single items into other single items, while the Assembler will be exclusively for crafting a stack of items into other items. Recipes for iron gears, copper wire, and rubber have been moved from the Assembler to the Fabricator, meaning that those items can now be used to construct the early game recipes.
+Unlike the Assembler, the Fabricator doesn't have an integrated conveyor belt. Items have to be added manually or using an Arm. The Fabricator can only craft single items into other single items, while the Assembler will be used exclusively for crafting a stack of items into other items. Recipes for iron gears, copper wire, and rubber have been moved from the Assembler to the Fabricator, meaning that those items can now be used to construct the early game recipes.
 
 I'm still working on the balance and progression of items and crafting recipes, but I think this new crafting machine will make it a lot easier to come up with a progression flow that feels good in the early game. Long term, I still think it would be cool to introduce more machines, such as a metal press, mixer, and wire extruder, but the Fabricator and Assembler can cover most of the planned recipes for the time being.
 
 ## Wrap up
 
-I'm really pleased with how the Mission Browser came together. I still need to have more people playtest it, but I think it is a huge improvement over the previous system. I think the UI still needs a bit of work, but I plan to revisit that (and all the other UI elements in the game) later on in development. For now, I'm planning on to other parts of the game.
+I'm really pleased with how the Mission Browser came together. I still need to have more people playtest it, but I think it is a huge improvement over the previous system. I think the UI still needs a bit of work, but I plan to revisit that (and all the other UI elements in the game) later on in development. For now, I'm planning to move on to other parts of the game.
 
-As always, I'd love to hear your thoughts and suggestions! Feel free to drop a comment or join or Discord using the link below.
+As always, I'd love to hear your thoughts and suggestions! Feel free to drop a comment or join our Discord using the link below.
 
 Cheers!
 
