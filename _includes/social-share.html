@@ -14,23 +14,11 @@
   
     <!╌ Steam Widget ╌>
     <h4 class="page__share-title">{{ site.data.ui-text[site.locale].steam_widget_label | default: "Wishlist on Steam" }}</h4>
-
-
     <iframe src="https://store.steampowered.com/widget/1991250/" frameborder="0" width="646" height="190"></iframe>
 
     <!╌ Discord Widget ╌>
     <h4 class="page__share-title">{{ site.data.ui-text[site.locale].discord_invite_label | default: "Join the Discord" }}</h4>
-
-    <script src="{{ '/assets/js/discordInvite.js' | relative_url }}"></script>
-    <script>
-      discordInvite.init({
-      inviteCode: 'QHqgE9kujZ',
-      title: 'Automation Station',
-      hideIntro: true,
-      miniMode: true,
-    });
-    discordInvite.render();
-    </script>
     <div id="discordInviteBox"></div>
+    
   {% endif %}
 </section>
