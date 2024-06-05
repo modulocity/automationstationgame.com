@@ -32,7 +32,7 @@ gallery2:
     title: "Final codex design"
 ---
 
-Hello friends! We're back with another devlog for Automation Station. This one is all about the Codex, which will act as a reference manual for all of the items, buildings, and anything else you discover in this strange world. There is a lot to talk about, from the design to implementation, so let's dive in!
+Hello friends! We're back with another devlog for Automation Station. This one is all about the Codex, which will act as a reference manual for all of the items, buildings, and everything else you'll discover in this strange world. There is a lot to talk about, from the design to implementation, so let's dive in!
 
 ## Why add a Codex?
 
@@ -42,7 +42,7 @@ For example, in Satisfactory, all the recipes can be found in the codex. However
 
 {% include gallery id="gallery" layout="half" caption="Satisfactory Recipes" %}
 
-In Automation Station, buildings don't have UI screens. That means all of the game's information has to be communicated to the player in other ways. This is also why buildings don't have internal inventories and buildings dynamically set recipes based on what is given to them. However, players will still need a place to check item recipes so that they know how to build their factory. They also need to understand how each building and item is intended to be used or combined with other objects in the game. The Codex aims to fill this gap.
+In Automation Station, buildings don't have UI screens. That means all of the game's information has to be communicated to the player in other ways. This is also why buildings don't have internal inventories and why buildings dynamically set recipes based on what is given to them. However, players will still need a place to check item recipes so that they know how to build their factory. They also need to understand how each building and item is intended to be used or combined with other objects in the game. The Codex aims to fill this gap.
 
 ## Design Inspiration
 
@@ -89,7 +89,7 @@ With the sketch shader done, I got to work on the design of the interface itself
 
 One of the design questions I grappled with was how the category tabs should look on the top left of the codex. I experimented with both text and icons (placeholder in the mock-up) and ultimately decided that the improved readability of the text was the better option.
 
-As I mentioned above, one important feature of the codex is to display recipes. Players should be able to see what buildings they need to use to craft an item and all of the required ingredients. Here is the mock-up for different kinds of crafting and smelting recipes:
+As I mentioned above, one important feature of the codex is to display recipes. Players should be able to see what buildings they need to use to craft an item and all of its required ingredients. Here is the mock-up for different kinds of crafting and smelting recipes:
 
 <figure class="align-center">
     <a href="/assets/images/devlogs/devlog_27/codex_recipes.png"><img src="/assets/images/devlogs/devlog_27/codex_recipes.png"></a>
@@ -108,13 +108,13 @@ There is still some work left to do in a few places, but I'm really happy with h
 
 ## New Controls... Again
 
-I've mentioned several changes to the controls in previous devlogs, and this one is no exception. The truth is, the controls have never felt perfect, so we are always thinking about ways to improve them. Some of you might be wondering why we are spending so much time on the controls when we could just implement control rebinding. Firstly, default keybinds are very important to get right to prevent players from bouncing off the game immediately. But that is orthogonal to the design decisions we have been making recently regarding controls. For example, the presence of an item/tool toggle fundamentally changes how the controls work as well as how the toolbar should look. Whatever design we settle on will definitely support full control rebinding by the time the game is released.
+I've mentioned several changes to the controls in previous devlogs, and this one is no exception. The truth is, the controls have never felt perfect, so we are always thinking about ways to improve them. Some of you might be wondering why we are spending so much time on the controls when we could just implement control rebinding. First off, default keybinds are very important to get right to prevent players from bouncing off the game immediately. Second, design questions like "should pressing this control repeatedly have an effect?" or "is this too many key presses and clicks to smelt an ingot?" influence user input behavior beyond what key those actions are bound to. For example, the presence of an item/tool toggle fundamentally changes how the controls work as well as how the toolbar should look. Whatever design we settle on will definitely support full control rebinding by the time the game is released.
 
 The latest control scheme was suggested by Snaxalot. The basic idea is to remove the item/tool mode toggle introduced in [devlog #25](/blog/devlog-25) and instead make Q a dedicated item button and E a dedicated tool button (when playing on mouse and keyboard). Right-click will be reserved for unequipping the currently equipped item or tool.
 
 Implementing this control scheme was pretty simple, but the toolbar had to be redesigned slightly to show the new prompts in the right places. We took this opportunity to also fix a pain point with the old design. Previously, if a tool was equipped, only the last used item would be visible in the toolbar. And if an item was equipped, only the last used tool was visible. While this clearly communicated which item or tool was last used, it made it hard to see what other items or tools you had collected.
 
-The new toolbar design keeps both the items and tools visible at all times. The last used item or tool now has a little white dot above to help differentiate it, although this might need to be made a bit more obvious.
+The new toolbar design keeps both the items and tools in your inventory visible at all times. The last used item or tool now has a little white dot above it to help differentiate it, although this might need to be made a bit more obvious.
 
 Here is how the new toolbar looks in-game:
 
