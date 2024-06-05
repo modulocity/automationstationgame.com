@@ -3,6 +3,9 @@
    ========================================================================== */
 
 $(document).ready(function() {
+  // FitVids init
+  $("#main").fitVids();
+
   // Sticky sidebar
   var stickySideBar = function() {
     var show =
@@ -130,7 +133,4 @@ $(document).ready(function() {
       $(this).append(anchor);
     }
   });
-
-  // FitVids init
-  $("#main").fitVids();
 });
