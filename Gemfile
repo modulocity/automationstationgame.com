@@ -17,6 +17,9 @@ gem "jekyll"
 gem "minimal-mistakes-jekyll"
 gem 'jekyll-redirect-from'
 
+# Locks to the version used by GitHub Pages. If we ever migrate to GitHub Actions, we can remove this line.
+gem 'jekyll-sass-converter', '~> 2.2'
+
 # The following plugins are automatically loaded by the theme-gem:
 #   gem "jekyll-paginate"
 #   gem "jekyll-sitemap"
